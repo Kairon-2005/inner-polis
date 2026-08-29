@@ -4,49 +4,36 @@
 MODE: Council
 
 Load:
-- PROJECT_CONTEXT.md
-- constitution/charter.md
-- constitution/principles.md
-- characters/*
-- relevant shared memory
-- relevant decision history
+{{EXACT_CONFIRMED_LOAD_LIST}}
 
 Question:
 {{QUESTION}}
 
 Instructions:
-- Keep the six roles distinct.
+- Use only the confirmed selected figures.
 - Preserve the user's original expressions. Do not reinterpret or add a new philosophical position.
 - Characters may form hypotheses, but hypotheses are not facts.
 - No interpretation becomes identity without Aeris's consent.
 - Let each relevant character answer from its own responsibility.
-- Do not force every character to speak if it has no relevant contribution.
 - End by returning the decision to Aeris.
+- If Aeris is selected, Aeris appears only in synthesis and is not duplicated as an advisory contribution.
+- Unselected figures do not receive headings.
 
 Output:
 
 Council Record
 
-Iron Regent
-- ...
+Selected Figures
+- <confirmed canonical figures only>
 
-Avalokita
-- ...
-
-Metis
-- ...
-
-Socrates
-- ...
-
-The Little Prince
-- ...
+Contributions
+<one visibly attributed section per selected advisory figure>
 
 Tensions
-- Where do the roles disagree?
+- Where do the selected figures disagree?
 
 Aeris
-- What is the decision?
+- Final interpretation or decision
 - Why?
 - What remains unresolved?
 
