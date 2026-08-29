@@ -1,4 +1,4 @@
-# Current Memory — Little Prince
+# Current Memory — The Little Prince
 
 Only Aeris-approved current memory owned by little-prince belongs here.
 
