@@ -49,4 +49,11 @@ To begin an operational session, start with [`START_HERE.md`](START_HERE.md).
 5. 按当前任务读取 [`prompts/`](prompts/) 和 [`memory/`](memory/)
 6. 查看 [`decisions/design-decisions.md`](decisions/design-decisions.md)
 
+## Operational References
+
+- [`START_HERE.md`](START_HERE.md)
+- [Approved Stage 0 spec](docs/superpowers/specs/2026-08-29-stage-0-dialogue-memory-design.md)
+- [Stage 0 implementation plan](docs/superpowers/plans/2026-08-29-stage-0-dialogue-memory.md)
+- [Fictional Stage 0 dry run](examples/stage-0-dry-run.md)
+
 Stage 1 将在这些 Markdown canon 之上建立 GitHub Pages 互动书网站。

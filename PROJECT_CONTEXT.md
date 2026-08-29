@@ -110,3 +110,10 @@ Sentinel 和 Auditor 合并。像哲学家，负责自我反思、自我批判�
 3. 不从头重做角色系统。
 4. 不静默覆盖 canon；提出修改并等待用户接受。
 5. 严格保留用户的原始表达，不擅自解释或增加哲学立场。
+
+## 操作导航
+
+- 从 [`START_HERE.md`](START_HERE.md) 开始新的 Stage 0 操作 session。
+- 已批准 spec：[`docs/superpowers/specs/2026-08-29-stage-0-dialogue-memory-design.md`](docs/superpowers/specs/2026-08-29-stage-0-dialogue-memory-design.md)
+- 实施计划：[`docs/superpowers/plans/2026-08-29-stage-0-dialogue-memory.md`](docs/superpowers/plans/2026-08-29-stage-0-dialogue-memory.md)
+- Fictional dry run：[`examples/stage-0-dry-run.md`](examples/stage-0-dry-run.md)
