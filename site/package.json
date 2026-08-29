@@ -1,6 +1,7 @@
 {
   "type": "module",
   "scripts": {
+    "assets:build": "node scripts/build-portraits.mjs",
     "dev": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
