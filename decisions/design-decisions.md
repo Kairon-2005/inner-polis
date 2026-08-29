@@ -51,6 +51,11 @@
 **Status:** Accepted direction; implementation not started
 **Decision:** 在 Markdown canon 之上建立 GitHub Pages 互动书网站。第一版包含首页、六个角色页和 Council Hall、Starfield、Archive、Observatory、Forge、Lake、Garden，不实现 LLM/API chat。
 
+## D-009 — Character selection determines dialogue mode
+
+**Status:** Accepted
+**Decision:** 用户可以选择 1～n 个角色。选择 1 个角色时进入 one-on-one；选择多个角色时进入 Council 讨论。系统可以推荐角色，但必须由用户 / Aeris 确认后才进入对应角色模式，不得静默选择或切换角色。
+
 ## 尚未决定
 
 - Stage 1 的具体 static-site framework。
