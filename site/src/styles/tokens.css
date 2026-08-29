@@ -1,0 +1,28 @@
+:root {
+  color-scheme: dark;
+
+  --void: #030304;
+  --void-soft: #09090b;
+  --stone-black: #101013;
+  --stone: #1b1a1a;
+  --stone-lit: #2c2925;
+  --ivory: #f3f0e8;
+  --ivory-muted: #bdb8ad;
+  --gold: #b99a5e;
+  --gold-bright: #ddc889;
+  --gold-dim: #655235;
+
+  --figure-aeris: #dac88f;
+  --figure-iron-regent: #b8ad9a;
+  --figure-avalokita: #cdbb8b;
+  --figure-metis: #b5c0bd;
+  --figure-socrates: #b7a47d;
+  --figure-little-prince: #d8be72;
+
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-inscription: "Avenir Next Condensed", "Arial Narrow", Arial, sans-serif;
+
+  --ease-ceremonial: cubic-bezier(0.22, 0.7, 0.18, 1);
+  --line-stone: rgba(238, 226, 201, 0.14);
+  --line-gold: rgba(185, 154, 94, 0.38);
+}

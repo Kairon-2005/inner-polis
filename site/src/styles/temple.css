@@ -1,0 +1,704 @@
+.temple {
+  position: relative;
+  isolation: isolate;
+  min-height: 100svh;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 15%, rgba(236, 224, 190, 0.11), transparent 19%),
+    radial-gradient(ellipse at 50% 108%, rgba(185, 154, 94, 0.13), transparent 42%),
+    linear-gradient(180deg, #020203 0%, #070709 47%, #030304 100%);
+}
+
+.temple::before,
+.temple::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+}
+
+.temple::before {
+  opacity: 0.62;
+  background:
+    linear-gradient(90deg, transparent 49.94%, rgba(230, 217, 186, 0.15) 50%, transparent 50.06%),
+    linear-gradient(180deg, transparent 72%, rgba(4, 4, 5, 0.84) 100%);
+}
+
+.temple::after {
+  inset: auto 0 0;
+  height: 43%;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.6));
+}
+
+.temple__cosmos {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  opacity: 0.72;
+  background-image:
+    radial-gradient(circle at 8% 13%, rgba(255, 255, 255, 0.8) 0 0.7px, transparent 1px),
+    radial-gradient(circle at 18% 34%, rgba(255, 239, 199, 0.45) 0 0.7px, transparent 1.2px),
+    radial-gradient(circle at 27% 9%, rgba(255, 255, 255, 0.55) 0 0.8px, transparent 1.2px),
+    radial-gradient(circle at 39% 26%, rgba(255, 255, 255, 0.42) 0 0.7px, transparent 1px),
+    radial-gradient(circle at 62% 8%, rgba(255, 255, 255, 0.62) 0 0.8px, transparent 1.1px),
+    radial-gradient(circle at 74% 29%, rgba(255, 239, 199, 0.48) 0 0.7px, transparent 1px),
+    radial-gradient(circle at 87% 15%, rgba(255, 255, 255, 0.76) 0 0.8px, transparent 1.1px),
+    radial-gradient(circle at 94% 39%, rgba(255, 255, 255, 0.38) 0 0.7px, transparent 1px);
+}
+
+.temple__cosmos::before,
+.temple__cosmos::after {
+  position: absolute;
+  content: "";
+  border: 1px solid rgba(185, 154, 94, 0.09);
+  border-radius: 50%;
+}
+
+.temple__cosmos::before {
+  top: -54vw;
+  left: 50%;
+  width: 108vw;
+  height: 108vw;
+  transform: translateX(-50%);
+  box-shadow:
+    0 0 0 10vw rgba(185, 154, 94, 0.015),
+    0 0 0 23vw rgba(255, 255, 255, 0.012);
+}
+
+.temple__cosmos::after {
+  top: 9%;
+  left: 50%;
+  width: min(35vw, 520px);
+  height: min(35vw, 520px);
+  transform: translateX(-50%);
+  opacity: 0.45;
+}
+
+.temple__architecture {
+  position: absolute;
+  z-index: 2;
+  inset: 3.5% clamp(16px, 3.8vw, 72px) 6%;
+  pointer-events: none;
+}
+
+.temple__arch {
+  position: absolute;
+  bottom: 6%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-style: solid;
+  border-bottom: 0;
+  border-radius: 50% 50% 0 0 / 36% 36% 0 0;
+}
+
+.temple__arch--outer {
+  top: 0;
+  width: min(94vw, 1500px);
+  border-width: clamp(16px, 2.8vw, 46px);
+  border-color: rgba(29, 28, 27, 0.92);
+  box-shadow:
+    inset 0 0 0 1px rgba(238, 226, 201, 0.13),
+    0 0 0 1px rgba(0, 0, 0, 0.95),
+    inset 0 0 80px rgba(0, 0, 0, 0.76);
+}
+
+.temple__arch--outer::before,
+.temple__arch--outer::after {
+  position: absolute;
+  top: 8%;
+  width: 1px;
+  height: 88%;
+  content: "";
+  background: linear-gradient(transparent, var(--line-stone) 18%, var(--line-stone) 84%, transparent);
+}
+
+.temple__arch--outer::before {
+  left: -10px;
+}
+
+.temple__arch--outer::after {
+  right: -10px;
+}
+
+.temple__arch--inner {
+  top: 9%;
+  width: min(70vw, 1040px);
+  border-width: 1px;
+  border-color: rgba(238, 226, 201, 0.16);
+  box-shadow:
+    0 0 36px rgba(185, 154, 94, 0.05),
+    inset 0 0 70px rgba(0, 0, 0, 0.86);
+}
+
+.temple__arch--inner::before {
+  position: absolute;
+  inset: 19% 9% 0;
+  content: "";
+  border: 1px solid rgba(185, 154, 94, 0.1);
+  border-bottom: 0;
+  border-radius: 50% 50% 0 0 / 34% 34% 0 0;
+}
+
+.temple__vault-line {
+  position: absolute;
+  top: -12%;
+  width: 1px;
+  height: 48%;
+  transform-origin: top;
+  background: linear-gradient(rgba(238, 226, 201, 0.2), transparent);
+}
+
+.temple__vault-line--left {
+  left: 27%;
+  transform: rotate(37deg);
+}
+
+.temple__vault-line--right {
+  right: 27%;
+  transform: rotate(-37deg);
+}
+
+.temple__oculus {
+  position: absolute;
+  top: 7%;
+  left: 50%;
+  width: clamp(18px, 2.2vw, 36px);
+  aspect-ratio: 1;
+  transform: translateX(-50%) rotate(45deg);
+  border: 1px solid rgba(218, 200, 143, 0.42);
+  box-shadow:
+    0 0 0 8px rgba(218, 200, 143, 0.025),
+    0 0 34px rgba(218, 200, 143, 0.16);
+}
+
+.temple__columns {
+  position: absolute;
+  top: 23%;
+  bottom: 0;
+  width: clamp(82px, 10vw, 170px);
+}
+
+.temple__columns--left {
+  left: 0;
+}
+
+.temple__columns--right {
+  right: 0;
+}
+
+.temple__columns i {
+  position: absolute;
+  bottom: 0;
+  display: block;
+  width: clamp(16px, 1.8vw, 29px);
+  height: 100%;
+  border: 1px solid rgba(238, 226, 201, 0.1);
+  background:
+    linear-gradient(90deg, #080809, #292725 44%, #111112 76%, #040405),
+    var(--stone-black);
+  box-shadow:
+    inset 1px 0 rgba(255, 255, 255, 0.05),
+    8px 0 32px rgba(0, 0, 0, 0.86);
+}
+
+.temple__columns i::before,
+.temple__columns i::after {
+  position: absolute;
+  left: 50%;
+  width: 190%;
+  transform: translateX(-50%);
+  content: "";
+  border: 1px solid rgba(238, 226, 201, 0.09);
+  background: linear-gradient(90deg, #080809, #282521 50%, #070708);
+}
+
+.temple__columns i::before {
+  top: -2%;
+  height: 4%;
+  box-shadow: 0 7px 0 -2px rgba(185, 154, 94, 0.1);
+}
+
+.temple__columns i::after {
+  bottom: 0;
+  height: 3.5%;
+}
+
+.temple__columns--left i:nth-child(1),
+.temple__columns--right i:nth-child(1) {
+  height: 79%;
+  opacity: 0.42;
+}
+
+.temple__columns--left i:nth-child(2),
+.temple__columns--right i:nth-child(2) {
+  height: 90%;
+  opacity: 0.68;
+}
+
+.temple__columns--left i:nth-child(3),
+.temple__columns--right i:nth-child(3) {
+  height: 100%;
+}
+
+.temple__columns--left i:nth-child(1) { left: 0; }
+.temple__columns--left i:nth-child(2) { left: 38%; }
+.temple__columns--left i:nth-child(3) { right: 0; }
+.temple__columns--right i:nth-child(1) { right: 0; }
+.temple__columns--right i:nth-child(2) { right: 38%; }
+.temple__columns--right i:nth-child(3) { left: 0; }
+
+.temple__title {
+  position: absolute;
+  z-index: 7;
+  top: clamp(32px, 5vh, 56px);
+  left: 50%;
+  width: min(88vw, 640px);
+  transform: translateX(-50%);
+  text-align: center;
+  text-shadow: 0 2px 24px #000;
+}
+
+.temple__title p {
+  margin: 0 0 0.45rem;
+  color: var(--gold-bright);
+  font-family: var(--font-inscription);
+  font-size: clamp(0.6rem, 0.75vw, 0.75rem);
+  font-weight: 500;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+}
+
+.temple__title h1 {
+  margin: 0;
+  color: var(--ivory);
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 400;
+  letter-spacing: 0.075em;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.temple__title > span {
+  display: block;
+  width: clamp(70px, 9vw, 128px);
+  height: 1px;
+  margin: clamp(10px, 1.4vh, 16px) auto 0;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.temple__court {
+  position: absolute;
+  z-index: 5;
+  inset: clamp(132px, 18vh, 180px) clamp(82px, 9vw, 150px) clamp(150px, 18vh, 185px);
+  max-width: 1240px;
+  margin-inline: auto;
+}
+
+.throne {
+  --throne-accent: var(--gold);
+  position: absolute;
+  width: clamp(102px, 10.5vw, 154px);
+  height: clamp(205px, 37vh, 352px);
+  padding: 0;
+  cursor: pointer;
+  border: 0;
+  outline: none;
+  background: transparent;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.throne[data-figure="aeris"] {
+  --throne-accent: var(--figure-aeris);
+  top: -3%;
+  left: 50%;
+  z-index: 6;
+  width: clamp(132px, 14vw, 196px);
+  height: clamp(268px, 50vh, 460px);
+  transform: translateX(-50%);
+}
+
+.throne[data-figure="iron-regent"] {
+  --throne-accent: var(--figure-iron-regent);
+  top: 29%;
+  left: 1%;
+}
+
+.throne[data-figure="avalokita"] {
+  --throne-accent: var(--figure-avalokita);
+  top: 12%;
+  left: 22%;
+}
+
+.throne[data-figure="metis"] {
+  --throne-accent: var(--figure-metis);
+  top: 12%;
+  right: 22%;
+}
+
+.throne[data-figure="socrates"] {
+  --throne-accent: var(--figure-socrates);
+  top: 29%;
+  right: 1%;
+}
+
+.throne[data-figure="little-prince"] {
+  --throne-accent: var(--figure-little-prince);
+  top: 43%;
+  left: 50%;
+  z-index: 7;
+  width: clamp(90px, 8.4vw, 126px);
+  height: clamp(178px, 30vh, 278px);
+  transform: translateX(-50%);
+}
+
+.throne__body {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition:
+    transform 420ms var(--ease-ceremonial),
+    filter 420ms var(--ease-ceremonial);
+}
+
+.throne__aureole {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  width: 72%;
+  aspect-ratio: 1;
+  transform: translateX(-50%);
+  border: 1px solid color-mix(in srgb, var(--throne-accent) 43%, transparent);
+  border-radius: 50%;
+  opacity: 0.62;
+  background: radial-gradient(circle, color-mix(in srgb, var(--throne-accent) 15%, transparent), transparent 68%);
+  box-shadow:
+    0 0 0 7px color-mix(in srgb, var(--throne-accent) 3%, transparent),
+    0 0 34px color-mix(in srgb, var(--throne-accent) 10%, transparent);
+  transition: opacity 420ms var(--ease-ceremonial), box-shadow 420ms var(--ease-ceremonial);
+}
+
+.throne--dominant .throne__aureole {
+  top: 7%;
+  opacity: 0.92;
+  box-shadow:
+    0 0 0 9px color-mix(in srgb, var(--throne-accent) 4%, transparent),
+    0 0 48px color-mix(in srgb, var(--throne-accent) 18%, transparent);
+}
+
+.throne__portrait {
+  position: absolute;
+  z-index: 2;
+  inset: 0 5% 15%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  mask-image: linear-gradient(#000 75%, transparent 99%);
+}
+
+.throne__portrait img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  filter: saturate(0.74) contrast(1.06) drop-shadow(0 12px 15px rgba(0, 0, 0, 0.95));
+  user-select: none;
+}
+
+.throne__seat {
+  position: absolute;
+  z-index: 1;
+  right: 13%;
+  bottom: 10%;
+  left: 13%;
+  height: 33%;
+  border: 1px solid color-mix(in srgb, var(--throne-accent) 25%, transparent);
+  border-bottom-width: 3px;
+  background:
+    linear-gradient(90deg, transparent 47%, color-mix(in srgb, var(--throne-accent) 12%, transparent) 50%, transparent 53%),
+    linear-gradient(180deg, rgba(30, 29, 27, 0.88), rgba(4, 4, 5, 0.96));
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.04),
+    0 13px 22px rgba(0, 0, 0, 0.8);
+  clip-path: polygon(16% 0, 84% 0, 96% 100%, 4% 100%);
+}
+
+.throne__seat::before,
+.throne__seat::after {
+  position: absolute;
+  bottom: -10%;
+  width: 2px;
+  height: 58%;
+  content: "";
+  background: linear-gradient(var(--throne-accent), #16130e);
+  opacity: 0.56;
+}
+
+.throne__seat::before { left: 15%; }
+.throne__seat::after { right: 15%; }
+
+.throne__name {
+  position: absolute;
+  z-index: 4;
+  right: -22%;
+  bottom: 0;
+  left: -22%;
+  color: var(--ivory);
+  font-family: var(--font-inscription);
+  font-size: clamp(0.58rem, 0.78vw, 0.78rem);
+  font-weight: 500;
+  letter-spacing: 0.17em;
+  line-height: 1.25;
+  text-align: center;
+  text-shadow: 0 2px 8px #000;
+  text-transform: uppercase;
+}
+
+.throne:hover .throne__body,
+.throne:focus-visible .throne__body {
+  transform: translateY(-7px);
+  filter: brightness(1.12);
+}
+
+.throne:hover .throne__aureole,
+.throne:focus-visible .throne__aureole {
+  opacity: 1;
+  box-shadow:
+    0 0 0 8px color-mix(in srgb, var(--throne-accent) 5%, transparent),
+    0 0 44px color-mix(in srgb, var(--throne-accent) 23%, transparent);
+}
+
+.throne:focus-visible {
+  outline: 2px solid var(--gold-bright);
+  outline-offset: 5px;
+  border-radius: 48% 48% 8px 8px;
+}
+
+.temple__floor {
+  position: absolute;
+  z-index: 3;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 30%;
+  overflow: hidden;
+  perspective: 360px;
+  background: linear-gradient(180deg, transparent, rgba(14, 13, 12, 0.9));
+}
+
+.temple__floor::before,
+.temple__floor::after {
+  position: absolute;
+  left: 50%;
+  content: "";
+  transform: translateX(-50%) rotateX(64deg);
+  transform-origin: top center;
+}
+
+.temple__floor::before {
+  top: 12%;
+  width: min(74vw, 980px);
+  height: 130%;
+  border-right: 1px solid rgba(185, 154, 94, 0.13);
+  border-left: 1px solid rgba(185, 154, 94, 0.13);
+  background:
+    linear-gradient(90deg, transparent 49.9%, rgba(218, 200, 143, 0.2) 50%, transparent 50.1%),
+    repeating-linear-gradient(180deg, transparent 0 31px, rgba(238, 226, 201, 0.07) 32px 33px);
+}
+
+.temple__floor::after {
+  top: 16%;
+  width: min(31vw, 430px);
+  height: 110%;
+  border: 1px solid rgba(185, 154, 94, 0.18);
+  box-shadow: 0 0 34px rgba(185, 154, 94, 0.06);
+}
+
+.temple__floor > span {
+  position: absolute;
+  top: 13%;
+  left: 50%;
+  width: 1px;
+  height: 120%;
+  transform-origin: top;
+  background: linear-gradient(rgba(238, 226, 201, 0.14), transparent 75%);
+}
+
+.temple__floor > span:nth-child(1) { transform: rotate(62deg); }
+.temple__floor > span:nth-child(2) { transform: rotate(42deg); }
+.temple__floor > span:nth-child(3) { transform: rotate(0deg); }
+.temple__floor > span:nth-child(4) { transform: rotate(-42deg); }
+.temple__floor > span:nth-child(5) { transform: rotate(-62deg); }
+
+.temple__threshold {
+  position: absolute;
+  z-index: 9;
+  bottom: clamp(18px, 3.2vh, 34px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.council-threshold {
+  position: relative;
+  display: grid;
+  min-width: clamp(138px, 13vw, 186px);
+  min-height: 66px;
+  padding: 22px 25px 13px;
+  place-items: center;
+  cursor: pointer;
+  border: 1px solid rgba(218, 200, 143, 0.48);
+  background:
+    linear-gradient(90deg, transparent, rgba(185, 154, 94, 0.08), transparent),
+    rgba(3, 3, 4, 0.88);
+  box-shadow:
+    inset 0 0 0 4px rgba(3, 3, 4, 0.9),
+    inset 0 0 0 5px rgba(185, 154, 94, 0.1),
+    0 10px 35px rgba(0, 0, 0, 0.75);
+  clip-path: polygon(11% 0, 89% 0, 100% 50%, 89% 100%, 11% 100%, 0 50%);
+  transition:
+    color 300ms var(--ease-ceremonial),
+    border-color 300ms var(--ease-ceremonial),
+    background-color 300ms var(--ease-ceremonial),
+    transform 300ms var(--ease-ceremonial);
+}
+
+.council-threshold__sigil {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  width: 18px;
+  aspect-ratio: 1;
+  transform: translateX(-50%) rotate(45deg);
+  border: 1px solid var(--gold);
+  background: var(--void);
+  box-shadow: inset 0 0 0 4px var(--void), inset 0 0 0 5px rgba(185, 154, 94, 0.25);
+}
+
+.council-threshold__label {
+  color: var(--ivory);
+  font-size: clamp(0.9rem, 1.2vw, 1.15rem);
+  letter-spacing: 0.24em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.council-threshold__caption {
+  margin-top: 6px;
+  color: var(--gold-bright);
+  font-family: var(--font-inscription);
+  font-size: 0.52rem;
+  letter-spacing: 0.34em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.council-threshold:hover {
+  border-color: var(--gold-bright);
+  background-color: rgba(185, 154, 94, 0.1);
+  transform: translateY(-3px);
+}
+
+.council-threshold:focus-visible {
+  outline: 2px solid var(--gold-bright);
+  outline-offset: 6px;
+}
+
+@media (max-width: 820px) {
+  .temple {
+    min-height: 1180px;
+    overflow-y: auto;
+  }
+
+  .temple__architecture {
+    inset-inline: 10px;
+  }
+
+  .temple__arch--outer {
+    width: 120vw;
+  }
+
+  .temple__arch--inner {
+    width: 92vw;
+  }
+
+  .temple__columns {
+    width: 58px;
+    opacity: 0.75;
+  }
+
+  .temple__columns i:nth-child(1),
+  .temple__columns i:nth-child(2) {
+    display: none;
+  }
+
+  .temple__columns--left i:nth-child(3) { right: 0; }
+  .temple__columns--right i:nth-child(3) { left: 0; }
+
+  .temple__court {
+    inset: 150px 52px 160px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 280px;
+    gap: 0 22px;
+  }
+
+  .throne,
+  .throne[data-figure] {
+    position: relative;
+    top: auto;
+    right: auto;
+    left: auto;
+    width: min(100%, 142px);
+    height: 270px;
+    margin-inline: auto;
+    transform: none;
+  }
+
+  .throne[data-figure="aeris"] {
+    grid-column: 1 / -1;
+    width: 166px;
+    height: 315px;
+    margin-bottom: -35px;
+  }
+
+  .throne[data-figure="little-prince"] {
+    width: 118px;
+    height: 238px;
+  }
+
+  .temple__floor {
+    height: 20%;
+  }
+}
+
+@media (max-width: 480px) {
+  .temple__title {
+    top: 30px;
+  }
+
+  .temple__title p {
+    letter-spacing: 0.28em;
+  }
+
+  .temple__court {
+    inset-inline: 37px;
+    gap: 0 10px;
+  }
+
+  .throne__name {
+    right: -10%;
+    left: -10%;
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .throne__body,
+  .throne__aureole,
+  .council-threshold {
+    transition: none;
+  }
+}

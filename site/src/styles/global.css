@@ -1,14 +1,31 @@
-:root {
-  color-scheme: dark;
-  font-family: system-ui, sans-serif;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  background: var(--void);
 }
 
 body {
   margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--void);
+  color: var(--ivory);
+  font-family: var(--font-display);
+  -webkit-font-smoothing: antialiased;
 }
 
-main {
-  display: grid;
-  min-height: 100vh;
-  place-items: center;
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  color: inherit;
 }
