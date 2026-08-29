@@ -1,9 +1,24 @@
 ---
 import Throne from "./Throne.astro";
+import FigureDialog from "./FigureDialog.astro";
 import { FIGURES } from "../data/figures";
-import { PORTRAITS } from "../data/portrait-imports";
-import type { FigureSlug } from "../types/content";
+import type { ImageMetadata } from "astro";
+import type { AcceptedMemory, CharacterContent, FigureDefinition, FigureSlug } from "../types/content";
 import "../styles/temple.css";
+import "../styles/dialog.css";
+
+interface ReadingLayer {
+  figure: FigureDefinition;
+  character: CharacterContent;
+  memories: readonly AcceptedMemory[];
+  portrait: ImageMetadata;
+}
+
+interface Props {
+  readingLayers: readonly ReadingLayer[];
+}
+
+const { readingLayers } = Astro.props;
 
 const THRONE_NAMES: Record<FigureSlug, string> = {
   aeris: "Aeris",
@@ -44,7 +59,7 @@ const THRONE_NAMES: Record<FigureSlug, string> = {
       <Throne
         figure={figure}
         name={THRONE_NAMES[figure.slug]}
-        portrait={PORTRAITS[figure.slug]}
+        portrait={readingLayers.find((layer) => layer.figure.slug === figure.slug)!.portrait}
         dominant={figure.slug === "aeris"}
       />
     ))}
@@ -62,3 +77,18 @@ const THRONE_NAMES: Record<FigureSlug, string> = {
     </button>
   </div>
 </main>
+
+{readingLayers.map(({ figure, character, memories, portrait }) => (
+  <FigureDialog
+    name={THRONE_NAMES[figure.slug]}
+    character={character}
+    memories={memories}
+    portrait={portrait}
+  />
+))}
+
+<script>
+  import { initDialogController } from "../scripts/dialog-controller";
+
+  initDialogController(document);
+</script>

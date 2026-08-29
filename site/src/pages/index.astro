@@ -1,8 +1,21 @@
 ---
 import TempleEntrance from "../components/TempleEntrance.astro";
+import { FIGURES } from "../data/figures";
+import { PORTRAITS } from "../data/portrait-imports";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { loadCharacter } from "../lib/character-content";
+import { loadCurrentMemory } from "../lib/memory-content";
+
+const readingLayers = await Promise.all(
+  FIGURES.map(async (figure) => ({
+    figure,
+    character: await loadCharacter(figure),
+    memories: await loadCurrentMemory(figure),
+    portrait: PORTRAITS[figure.slug],
+  })),
+);
 ---
 
 <BaseLayout>
-  <TempleEntrance />
+  <TempleEntrance readingLayers={readingLayers} />
 </BaseLayout>
