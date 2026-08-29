@@ -37,11 +37,15 @@ The mechanism must preserve these existing rules:
 
 - GitHub is the source of truth.
 - Established canon is not silently overwritten.
-- The user's original expressions, including 去人性 / 反人性, are preserved
-  without reinterpretation.
+- Aeris's original expressions and Aeris's own interpretations of them are
+  preserved as written.
+- No agent may paraphrase, soften, strengthen, translate, relabel, reinterpret,
+  or otherwise modify those expressions unless Aeris explicitly requests it.
 - Characters may form hypotheses, but hypotheses are not facts.
 - No interpretation becomes identity without Aeris's consent.
 - Aeris retains final interpretive authority.
+- Aeris leads the review of canon and persistent memory changes. No such change
+  is accepted without Aeris's explicit approval.
 - Character definitions, memory, and session records remain separate.
 
 ## 4. Character selection
@@ -90,7 +94,7 @@ This guide restates existing character responsibilities; it does not extend them
 | Figure | Recommend when the question primarily concerns |
 | --- | --- |
 | Aeris | choosing, integrating, or assuming the final decision |
-| The Iron Regent | discipline, commitment, endurance, 去人性 / 反人性, execution |
+| The Iron Regent | discipline, commitment, endurance, execution |
 | Avalokita | emotion, awareness, containment, openness, relationships |
 | Metis | intuition, strategy, execution, long-termism, resources, political maneuvering |
 | Socrates | self-reflection, self-criticism, attention, boundaries, motive, evidence |
@@ -268,7 +272,8 @@ Verification must demonstrate:
 9. revision preserves the superseded memory reference;
 10. every referenced Markdown file and relative link exists;
 11. no website framework, visual implementation, or Pages workflow is added;
-12. the phrases 去人性 / 反人性 remain unchanged in canon.
+12. no Aeris-authored expression or interpretation is modified without Aeris's
+    explicit review and approval.
 
 ## 10. Completion condition
 
