@@ -40,10 +40,13 @@ GitHub repo 是 source of truth。Character prompt、memory 和 session 分开�
 
 ## 阅读顺序
 
-1. [`PROJECT_CONTEXT.md`](PROJECT_CONTEXT.md)
-2. [`constitution/`](constitution/)
-3. [`characters/`](characters/)
-4. 按当前任务读取 [`prompts/`](prompts/) 和 [`memory/`](memory/)
-5. 查看 [`decisions/design-decisions.md`](decisions/design-decisions.md)
+To begin an operational session, start with [`START_HERE.md`](START_HERE.md).
+
+1. [`START_HERE.md`](START_HERE.md)
+2. [`PROJECT_CONTEXT.md`](PROJECT_CONTEXT.md)
+3. [`constitution/`](constitution/)
+4. [`characters/`](characters/)
+5. 按当前任务读取 [`prompts/`](prompts/) 和 [`memory/`](memory/)
+6. 查看 [`decisions/design-decisions.md`](decisions/design-decisions.md)
 
 Stage 1 将在这些 Markdown canon 之上建立 GitHub Pages 互动书网站。
