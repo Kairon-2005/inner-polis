@@ -2,18 +2,33 @@
 
 Memory 保存角色长期积累的观察。解释不能直接写成事实。
 
-## 与其他内容的区别
+## Owner stores
 
-- `characters/`：角色定义。
-- `sessions/`：一次具体对话的原始记录或总结。
-- `memory/`：由 session 提出、经过用户明确认可后保留的长期内容。
+| Owner | Current store |
+| --- | --- |
+| aeris | `memory/aeris/current.md` |
+| iron-regent | `memory/iron-regent/current.md` |
+| avalokita | `memory/avalokita/current.md` |
+| metis | `memory/metis/current.md` |
+| socrates | `memory/socrates/current.md` |
+| little-prince | `memory/little-prince/current.md` |
+| shared | `memory/shared/current.md` |
 
-## 写入规则
+Each accepted memory belongs in exactly one owner store. `shared` is only for memory owned by `shared`; it is not a copy of individual role memory.
 
-1. Session 先输出 Memory Candidates。
-2. 用户明确接受后才能写入长期 memory。
-3. 每条 memory 保存 owner、visibility、type、confidence、evidence 和时间。
-4. Hypothesis 继续标注为 hypothesis，不能改写成 fact。
-5. 角色 memory 分开管理；shared memory 只保存需要被多个角色读取的内容。
+## Visibility loading
 
-详细格式见 `prompts/memory-protocol.md`。
+- `private` memory is loaded only for its owner.
+- `council` memory is loaded for council context.
+- `sovereign` memory is loaded for sovereign context.
+- Accepted memory is loaded only when `state: current`.
+
+## Review lifecycle
+
+Closed sessions retain their candidates and review outcomes. A candidate begins `pending` and Aeris may mark it `rejected`, `deferred`, or `promoted`. A promoted candidate produces Aeris-approved accepted memory in exactly one owner store. Accepted memory has state `current`, `superseded`, or `archived`; only `current` memory is loaded.
+
+`EDIT` changes pending candidate text but still needs `ACCEPT`. `REVISE` creates a candidate rather than overwriting an accepted memory. When that candidate is accepted, the resulting memory supersedes the earlier memory. `ARCHIVE` requires Aeris confirmation and preserves evidence and Git history. `KEEP` makes no change.
+
+Aeris reviews canon and persistent-memory changes.
+
+Detailed schemas and commands are in `schemas/memory-schema.md`, `prompts/memory-review.md`, and `prompts/memory-protocol.md`.
