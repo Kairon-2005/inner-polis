@@ -219,7 +219,7 @@ source_candidate_id: candidate-2026-08-29-001
 owner: shared
 visibility: council
 type: decision
-statement: "Aeris approved this fictional Stage 0 example decision: the fictional subject may begin the ninety-day research project only after defining scope, weekly checkpoints, and a day-30 review."
+statement: "Aeris decided that the fictional subject may begin the ninety-day research project only after defining scope, weekly checkpoints, and a day-30 review."
 epistemic_status: accepted-decision
 confidence: high
 evidence:
