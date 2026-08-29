@@ -38,5 +38,7 @@ the session record. Set the record to `status: closed` and save it.
 ## MEMORY REVIEW
 
 The session record must be saved before memory review changes any
-`memory/*/current.md` file. Review candidates against the saved record; a
-candidate is not accepted memory until that later review explicitly accepts it.
+`memory/*/current.md` file. Aeris must conduct or explicitly authorize the
+review and acceptance of candidates against the saved record before any
+`memory/*/current.md` change. A candidate is not accepted memory until Aeris
+explicitly accepts it.
