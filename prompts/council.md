@@ -37,6 +37,11 @@ Aeris
 - Why?
 - What remains unresolved?
 
+Session Summary
+- What happened?
+- What was discovered?
+- What remains unresolved?
+
 Memory Candidates
 - Only candidate memories worth retaining; do not write them into long-term memory.
 

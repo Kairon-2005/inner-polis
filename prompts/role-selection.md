@@ -33,6 +33,9 @@ Selection Proposal
 - Reason per figure: <one sentence each>
 - Resulting mode: One-on-One | Council
 - Files to load: <exact repository paths>
+- Relevant shared memory files / IDs: <repository path and memory IDs | none>
+- Relevant selected-figure memory files / IDs: <owner, repository path, and memory IDs | none>
+- Relevant accepted decision files / IDs: <repository path and decision IDs | none>
 - Awaiting confirmation: yes
 
 Reply with one of:
@@ -45,7 +48,11 @@ Reply with one of:
 
 Use the canonical names and exact repository paths from the table above. Include
 `PROJECT_CONTEXT.md`, `constitution/charter.md`, and each confirmed character
-file in the Files to load list.
+file in the Files to load list. The proposal must enumerate each relevant shared
+memory file and memory ID, each relevant selected-figure-owned memory file and
+memory ID, and each relevant accepted decision file and decision ID. Use the
+literal `none` when any one of those three categories has no relevant entry; do
+not omit a category or leave it implicit.
 
 No character voice begins before `CONFIRM`. Unselected figures do not speak. Any
 later membership change requires confirmation through a new Selection Proposal

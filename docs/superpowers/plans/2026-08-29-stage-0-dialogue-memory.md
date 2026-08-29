@@ -426,6 +426,7 @@ Define the candidate schema exactly:
 
 ```yaml
 candidate_id: candidate-YYYY-MM-DD-NNN
+revision_of: null | memory-YYYY-MM-DD-NNN
 owner: shared | aeris | iron-regent | avalokita | metis | socrates | little-prince
 visibility: private | council | sovereign
 type: belief | emotion | event | decision | observation
@@ -448,7 +449,7 @@ owner: shared | aeris | iron-regent | avalokita | metis | socrates | little-prin
 visibility: private | council | sovereign
 type: belief | emotion | event | decision | observation
 statement: "Exact Aeris-approved statement"
-epistemic_status: observation | hypothesis | accepted-decision
+epistemic_status: observation | hypothesis
 confidence: low | medium | high
 evidence:
   - sessions/YYYY-MM-DD/session-file.md
@@ -484,7 +485,7 @@ Define existing-memory commands:
 
 ```text
 REVISE <memory-id>: <replacement>
-→ Create a pending candidate whose accepted form supersedes the earlier memory.
+→ Create a pending candidate with revision_of set to that memory ID; if accepted, supersedes copies revision_of.
 
 ARCHIVE <memory-id>
 → Set state to archived after Aeris confirms; preserve evidence and Git history.
@@ -740,7 +741,7 @@ Expected: exit 0.
 
 ```bash
 for cmd in ACCEPT EDIT REJECT DEFER REVISE ARCHIVE KEEP; do rg -q "$cmd" prompts/memory-review.md || exit 1; done
-rg -q 'remains pending until accepted' prompts/memory-review.md
+rg -q 'do not promote until ACCEPT' prompts/memory-review.md
 rg -q 'approved_by_aeris: false' schemas/memory-schema.md
 rg -q 'approved_by_aeris: true' schemas/memory-schema.md
 ! rg -n 'approved_by_aeris: true' memory/*/current.md memory/shared/current.md

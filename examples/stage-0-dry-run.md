@@ -114,6 +114,7 @@ loaded_memory: []
 
 ```yaml
 candidate_id: candidate-2026-08-29-001
+revision_of: null
 owner: shared
 visibility: council
 type: decision
@@ -129,6 +130,7 @@ approved_by_aeris: false
 
 ```yaml
 candidate_id: candidate-2026-08-29-002
+revision_of: null
 owner: socrates
 visibility: private
 type: observation
@@ -156,6 +158,7 @@ EDIT candidate-2026-08-29-001: Aeris decided that the fictional subject may begi
 
 ```yaml
 candidate_id: candidate-2026-08-29-001
+revision_of: null
 owner: shared
 visibility: council
 type: decision
@@ -180,6 +183,7 @@ DEFER candidate-2026-08-29-002
 
 ```yaml
 candidate_id: candidate-2026-08-29-001
+revision_of: null
 owner: shared
 visibility: council
 type: decision
@@ -195,6 +199,7 @@ approved_by_aeris: false
 
 ```yaml
 candidate_id: candidate-2026-08-29-002
+revision_of: null
 owner: socrates
 visibility: private
 type: observation
@@ -220,7 +225,7 @@ owner: shared
 visibility: council
 type: decision
 statement: "Aeris decided that the fictional subject may begin the ninety-day research project only after defining scope, weekly checkpoints, and a day-30 review."
-epistemic_status: accepted-decision
+epistemic_status: observation
 confidence: high
 evidence:
   - sessions/2026-08-29/session-2026-08-29-001-fictional-research-project.md

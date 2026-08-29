@@ -14,10 +14,19 @@ open`. Do not begin dialogue before the selection is confirmed.
 
 ## LOAD
 
-Use the confirmed exact load list. The load preview may include only relevant
-shared memory and memory owned by selected figures. Private memory must not be
-exposed to another figure unless Aeris explicitly changes the visibility or
-authorizes that access.
+Use the confirmed exact load list. Before dialogue, the load preview must repeat
+these required categories from the Selection Proposal:
+
+```text
+- Relevant shared memory files / IDs: <repository path and memory IDs | none>
+- Relevant selected-figure memory files / IDs: <owner, repository path, and memory IDs | none>
+- Relevant accepted decision files / IDs: <repository path and decision IDs | none>
+```
+
+Use the literal `none` when a category has no relevant entries. The preview may
+include only relevant shared memory and memory owned by selected figures.
+Private memory must not be exposed to another figure unless Aeris explicitly
+changes the visibility or authorizes that access.
 
 ## DIALOGUE
 

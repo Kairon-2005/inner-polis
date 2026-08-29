@@ -27,6 +27,7 @@ Evidence: sessions X, Y.
 
 ```yaml
 candidate_id: candidate-YYYY-MM-DD-NNN
+revision_of: null | memory-YYYY-MM-DD-NNN
 owner: shared | aeris | iron-regent | avalokita | metis | socrates | little-prince
 visibility: private | council | sovereign
 type: belief | emotion | event | decision | observation
@@ -49,7 +50,7 @@ owner: shared | aeris | iron-regent | avalokita | metis | socrates | little-prin
 visibility: private | council | sovereign
 type: belief | emotion | event | decision | observation
 statement: "Exact Aeris-approved statement"
-epistemic_status: observation | hypothesis | accepted-decision
+epistemic_status: observation | hypothesis
 confidence: low | medium | high
 evidence:
   - sessions/YYYY-MM-DD/session-file.md
@@ -66,8 +67,8 @@ state: current | superseded | archived
 2. 不自动写入长期 memory。
 3. Aeris 逐条审核 closed session record 中的 candidate ID：`ACCEPT`、`EDIT`、`REJECT` 或 `DEFER`。
 4. `EDIT` 仅替换待审核文本；仍须 `ACCEPT` 才能提升。`REJECT` 和 `DEFER` 只保留在 source session，不写入 memory。
-5. `ACCEPT` 将 candidate 的 `review_status` 标为 `promoted`，并在恰好一个 owner store 创建 accepted memory；保留 evidence、confidence、owner 和 visibility。
-6. `REVISE` 以既有 memory ID 创建 pending candidate，不覆盖原条目；只有接受该 candidate 后，新 memory 才会以 `supersedes` 指向原 memory，原 memory 的 `state` 变为 `superseded`。
+5. `ACCEPT` 将 candidate 的 `review_status` 标为 `promoted`，并在恰好一个 owner store 创建 accepted memory；保留 evidence、confidence、owner、visibility 和 `epistemic_status`，不得因提升而改变认识状态。
+6. 普通 candidate 使用 `revision_of: null`。`REVISE` 以既有 memory ID 创建 pending candidate，并将该 ID 写入 `revision_of`，不覆盖原条目；即使 candidate 被 `REJECT` 或 `DEFER`，也保留 `revision_of`。只有接受该 candidate 后，新 memory 的 `supersedes` 才复制 `revision_of`，原 memory 的 `state` 变为 `superseded`。
 7. `ARCHIVE` 在 Aeris 确认后将 accepted memory 的 `state` 设为 `archived`，保留 evidence 与 Git history。`KEEP` 不作更改。
 8. 不允许匿名批量接受；多项操作必须逐一列出每个 candidate 或 memory ID。
 

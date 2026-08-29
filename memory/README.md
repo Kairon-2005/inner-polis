@@ -27,7 +27,15 @@ Each accepted memory belongs in exactly one owner store. `shared` is only for me
 
 Closed sessions retain their candidates and review outcomes. A candidate begins `pending` and Aeris may mark it `rejected`, `deferred`, or `promoted`. A promoted candidate produces Aeris-approved accepted memory in exactly one owner store. Accepted memory has state `current`, `superseded`, or `archived`; only `current` memory is loaded.
 
-`EDIT` changes pending candidate text but still needs `ACCEPT`. `REVISE` creates a candidate rather than overwriting an accepted memory. When that candidate is accepted, the resulting memory supersedes the earlier memory. `ARCHIVE` requires Aeris confirmation and preserves evidence and Git history. `KEEP` makes no change.
+`EDIT` changes pending candidate text but still needs `ACCEPT`. Normal
+candidates use `revision_of: null`. `REVISE` creates a candidate whose
+`revision_of` records the source memory ID rather than overwriting an accepted
+memory; rejected and deferred revision candidates retain that link. When the
+candidate is accepted, the resulting memory copies `revision_of` to
+`supersedes`. Acceptance retains the candidate's `epistemic_status` exactly;
+approval is represented by `approved_by_aeris: true` and `state: current`.
+`ARCHIVE` requires Aeris confirmation and preserves evidence and Git history.
+`KEEP` makes no change.
 
 Aeris reviews canon and persistent-memory changes.
 

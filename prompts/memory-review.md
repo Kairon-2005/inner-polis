@@ -3,11 +3,15 @@
 Aeris reviews every persistent-memory operation. Review candidates by their IDs
 from the closed session record.
 
+Every candidate records `revision_of: null | memory-YYYY-MM-DD-NNN`. Normal
+candidates use `null`. A candidate created by `REVISE` keeps the source memory
+ID in `revision_of` even if Aeris rejects or defers it.
+
 ## Candidate commands
 
 ```text
 ACCEPT <candidate-id>
-→ Promote exactly as shown.
+→ Promote exactly as shown. Retain its epistemic_status, and copy revision_of to supersedes.
 
 EDIT <candidate-id>: <replacement>
 → Replace the pending text for review; do not promote until ACCEPT.
@@ -23,7 +27,7 @@ DEFER <candidate-id>
 
 ```text
 REVISE <memory-id>: <replacement>
-→ Create a pending candidate whose accepted form supersedes the earlier memory.
+→ Create a pending candidate with revision_of set to that memory ID; if accepted, supersedes copies revision_of.
 
 ARCHIVE <memory-id>
 → Set state to archived after Aeris confirms; preserve evidence and Git history.
