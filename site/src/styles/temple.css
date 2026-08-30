@@ -546,7 +546,7 @@
   bottom: clamp(18px, 3.2vh, 34px);
   left: clamp(18px, 4vw, 72px);
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: end;
   gap: clamp(18px, 3vw, 48px);
 }
@@ -696,7 +696,6 @@
   }
 
   .temple__thresholds {
-    grid-template-columns: 1fr 1fr;
     align-items: end;
   }
 
