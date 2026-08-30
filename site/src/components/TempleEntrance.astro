@@ -1,6 +1,7 @@
 ---
 import Throne from "./Throne.astro";
 import FigureDialog from "./FigureDialog.astro";
+import CouncilDialog from "./CouncilDialog.astro";
 import { FIGURES } from "../data/figures";
 import type { ImageMetadata } from "astro";
 import type { AcceptedMemory, CharacterContent, FigureDefinition, FigureSlug } from "../types/content";
@@ -70,7 +71,7 @@ const THRONE_NAMES: Record<FigureSlug, string> = {
   </div>
 
   <div class="temple__threshold">
-    <button class="council-threshold" type="button">
+    <button class="council-threshold" type="button" data-dialog-trigger="council">
       <span class="council-threshold__sigil" aria-hidden="true"></span>
       <span class="council-threshold__label">Council</span>
       <span class="council-threshold__caption" aria-hidden="true">Threshold</span>
@@ -86,6 +87,8 @@ const THRONE_NAMES: Record<FigureSlug, string> = {
     portrait={portrait}
   />
 ))}
+
+<CouncilDialog />
 
 <script>
   import { initDialogController } from "../scripts/dialog-controller";

@@ -194,6 +194,78 @@ body.dialog-open {
   color: var(--gold-bright);
 }
 
+.chat-handoff {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid color-mix(in srgb, var(--gold) 24%, transparent);
+}
+
+.chat-handoff h3 {
+  margin: 0 0 0.75rem;
+  color: var(--gold-bright);
+  font: 500 0.7rem/1.4 var(--font-inscription);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.chat-handoff p {
+  max-width: 34rem;
+  margin: 0.3rem 0 0;
+  color: var(--ivory-muted);
+  font: 400 0.9rem/1.6 var(--font-display);
+}
+
+.chat-handoff a {
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 0.55rem;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  color: var(--void);
+  font: 600 0.72rem/1 var(--font-inscription);
+  letter-spacing: 0.09em;
+  text-decoration: none;
+  text-transform: uppercase;
+  background: var(--gold-bright);
+  border: 1px solid var(--gold-bright);
+}
+
+.chat-handoff a:hover {
+  background: var(--ivory);
+  border-color: var(--ivory);
+}
+
+.chat-handoff a:focus-visible {
+  outline: 2px solid var(--ivory);
+  outline-offset: 4px;
+}
+
+.council-dialog {
+  width: min(42rem, calc(100vw - 2rem));
+}
+
+.council-dialog__frame {
+  display: block;
+  height: auto;
+}
+
+.council-dialog__reading {
+  max-height: calc(100dvh - 2rem);
+}
+
+.council-dialog__explanation {
+  color: var(--ivory-muted);
+  font: 400 1rem/1.8 var(--font-display);
+}
+
+.council-dialog__explanation p {
+  margin: 0;
+}
+
 @media (max-width: 700px) {
   .figure-dialog__frame {
     display: block;
@@ -217,6 +289,23 @@ body.dialog-open {
 
   .figure-dialog__header {
     padding-right: 2.5rem;
+  }
+
+  .chat-handoff {
+    display: grid;
+    align-items: start;
+  }
+
+  .chat-handoff a {
+    justify-self: start;
+  }
+
+  .council-dialog__frame {
+    height: auto;
+  }
+
+  .council-dialog__reading {
+    max-height: calc(100dvh - 2rem);
   }
 }
 

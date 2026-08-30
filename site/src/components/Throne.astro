@@ -15,6 +15,7 @@ const { figure, name, portrait, dominant = false } = Astro.props;
 <button
   class:list={["throne", { "throne--dominant": dominant }]}
   data-figure={figure.slug}
+  data-dialog-trigger={figure.slug}
   type="button"
 >
   <span class="throne__body">

@@ -1,6 +1,7 @@
 ---
 import type { ImageMetadata } from "astro";
 import type { AcceptedMemory, CharacterContent } from "../types/content";
+import ChatHandoff from "./ChatHandoff.astro";
 
 interface Props {
   name: string;
@@ -12,7 +13,7 @@ interface Props {
 const { name, character, memories, portrait } = Astro.props;
 ---
 
-<dialog class="figure-dialog" data-figure-dialog={character.slug} aria-label={name}>
+<dialog class="figure-dialog" data-dialog-id={character.slug} aria-label={name}>
   <div class="figure-dialog__frame">
     <button class="figure-dialog__close" type="button" data-dialog-close aria-label="Close">
       <span aria-hidden="true">×</span>
@@ -66,6 +67,8 @@ const { name, character, memories, portrait } = Astro.props;
           </div>
         )}
       </section>
+
+      <ChatHandoff labelId={`${character.slug}-chat-handoff-title`} />
     </div>
   </div>
 </dialog>

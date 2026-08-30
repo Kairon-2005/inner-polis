@@ -1,13 +1,13 @@
-const THRONE_SELECTOR = "button.throne[data-figure]";
-const DIALOG_SELECTOR = "dialog[data-figure-dialog]";
+const TRIGGER_SELECTOR = "button[data-dialog-trigger]";
+const DIALOG_SELECTOR = "dialog[data-dialog-id]";
 const CLOSE_SELECTOR = "[data-dialog-close]";
 const BODY_LOCK_CLASS = "dialog-open";
 
 export function initDialogController(root: Document): () => void {
   const dialogs = Array.from(root.querySelectorAll<HTMLDialogElement>(DIALOG_SELECTOR));
-  const thrones = Array.from(root.querySelectorAll<HTMLButtonElement>(THRONE_SELECTOR));
+  const triggers = Array.from(root.querySelectorAll<HTMLButtonElement>(TRIGGER_SELECTOR));
   let activeDialog: HTMLDialogElement | null = null;
-  let activatingThrone: HTMLButtonElement | null = null;
+  let activatingTrigger: HTMLButtonElement | null = null;
 
   const unlockBody = () => {
     root.body.classList.remove(BODY_LOCK_CLASS);
@@ -19,8 +19,8 @@ export function initDialogController(root: Document): () => void {
 
     activeDialog = null;
     unlockBody();
-    activatingThrone?.focus();
-    activatingThrone = null;
+    activatingTrigger?.focus();
+    activatingTrigger = null;
   };
 
   const closeDialog = (dialog: HTMLDialogElement) => {
@@ -32,14 +32,14 @@ export function initDialogController(root: Document): () => void {
     }
   };
 
-  const openDialog = (throne: HTMLButtonElement) => {
-    const figure = throne.dataset.figure;
-    const requestedDialog = dialogs.find((dialog) => dialog.dataset.figureDialog === figure);
+  const openDialog = (trigger: HTMLButtonElement) => {
+    const dialogId = trigger.dataset.dialogTrigger;
+    const requestedDialog = dialogs.find((dialog) => dialog.dataset.dialogId === dialogId);
     if (!requestedDialog) return;
 
     if (activeDialog?.open) closeDialog(activeDialog);
 
-    activatingThrone = throne;
+    activatingTrigger = trigger;
     activeDialog = requestedDialog;
 
     if (typeof requestedDialog.showModal === "function") {
@@ -50,7 +50,7 @@ export function initDialogController(root: Document): () => void {
     root.body.classList.add(BODY_LOCK_CLASS);
   };
 
-  const handleThroneClick = (event: Event) => {
+  const handleTriggerClick = (event: Event) => {
     openDialog(event.currentTarget as HTMLButtonElement);
   };
 
@@ -59,21 +59,21 @@ export function initDialogController(root: Document): () => void {
     if (dialog) closeDialog(dialog);
   };
 
-  for (const throne of thrones) throne.addEventListener("click", handleThroneClick);
+  for (const trigger of triggers) trigger.addEventListener("click", handleTriggerClick);
   for (const dialog of dialogs) {
     dialog.addEventListener("close", handleClose);
     dialog.querySelector<HTMLElement>(CLOSE_SELECTOR)?.addEventListener("click", handleCloseClick);
   }
 
   return () => {
-    for (const throne of thrones) throne.removeEventListener("click", handleThroneClick);
+    for (const trigger of triggers) trigger.removeEventListener("click", handleTriggerClick);
     for (const dialog of dialogs) {
       dialog.removeEventListener("close", handleClose);
       dialog.querySelector<HTMLElement>(CLOSE_SELECTOR)?.removeEventListener("click", handleCloseClick);
       if (dialog.open) closeDialog(dialog);
     }
     activeDialog = null;
-    activatingThrone = null;
+    activatingTrigger = null;
     unlockBody();
   };
 }
