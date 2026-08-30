@@ -37,4 +37,26 @@ describe("canonical figures", () => {
       expect(markdown).not.toMatch(/^## .*象征.*$/m);
     }
   });
+
+  it("locks the Aeris authority and Iron Regent traits approved for dialogue", async () => {
+    const aeris = await readFile(repositoryPath("characters/aeris.md"), "utf8");
+    const ironRegent = await readFile(
+      repositoryPath("characters/iron-regent.md"),
+      "utf8",
+    );
+
+    expect(aeris).toContain("- 白衣。");
+    expect(aeris).toContain("- 无武器。");
+    expect(aeris).toContain("- 无固定表情。");
+    expect(aeris).toContain("对 interpretation 与 memory 保留最终决定权。");
+    expect(aeris).toContain("Aeris retains final interpretive authority.");
+
+    expect(ironRegent).toContain("- strong will。");
+    expect(ironRegent).toContain("- 不受人性弱点支配。");
+    expect(ironRegent).toContain("- 足够理性。");
+    expect(ironRegent).toContain("- 坚定。");
+    expect(ironRegent).toContain(
+      "The Iron Regent may enforce commitments but may not determine ultimate goals.",
+    );
+  });
 });

@@ -2,6 +2,10 @@ import { expect, test } from "@playwright/test";
 
 const mobileViewport = { width: 390, height: 844 };
 const reportedDesktopViewport = { width: 1470, height: 956 };
+const shortDesktopViewports = [
+  { width: 1024, height: 600 },
+  { width: 1366, height: 641 },
+];
 
 test("desktop thrones follow the approved order without covering the central axis", async ({
   page,
@@ -33,6 +37,26 @@ test("desktop thrones follow the approved order without covering the central axi
   expect(aeris.y + aeris.height).toBeLessThanOrEqual(littlePrince.y - 12);
   expect(littlePrince.y + littlePrince.height).toBeLessThanOrEqual(council.y - 12);
 });
+
+for (const viewport of shortDesktopViewports) {
+  test(`short desktop ${viewport.width}x${viewport.height} keeps the lower throne clear of Council`, async ({
+    page,
+  }) => {
+    await page.setViewportSize(viewport);
+    await page.goto("/inner-polis/");
+
+    const littlePrince = await page.locator('[data-figure="little-prince"]').boundingBox();
+    const council = await page.locator(".council-threshold").boundingBox();
+    const councilSigil = await page.locator(".council-threshold__sigil").boundingBox();
+
+    expect(littlePrince).not.toBeNull();
+    expect(council).not.toBeNull();
+    expect(councilSigil).not.toBeNull();
+    expect(littlePrince!.y + littlePrince!.height).toBeLessThanOrEqual(
+      councilSigil!.y - 12,
+    );
+  });
+}
 
 test("mobile thrones form a non-overlapping ceremonial procession", async ({
   page,
