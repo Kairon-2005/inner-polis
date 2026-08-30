@@ -30,6 +30,8 @@ describe("ChatGPT Project Instructions", () => {
     expect(instructions).toMatch(/connected GitHub plugin/i);
     expect(instructions).toMatch(/ask.+question/i);
     expect(instructions).toMatch(/propose.+confirm.+1\.\.n figures/is);
+    expect(instructions).toMatch(/one confirmed figure.+One-on-One/is);
+    expect(instructions).toMatch(/two through six confirmed\s+figures.+Council/is);
     expect(instructions).toMatch(/only.+confirmed character.+prompt.+current-memory.+relevant accepted decisions/is);
     expect(instructions).toMatch(/Aeris.+review authority/is);
     expect(instructions).toMatch(/never invent accepted memory/i);

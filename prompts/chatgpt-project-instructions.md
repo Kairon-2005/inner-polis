@@ -17,6 +17,9 @@ For every new formal Inner Polis session:
    the repository's current canonical limit of one through six. The system may
    recommend figures, but Aeris confirms the selection. Do not begin a character
    voice before confirmation.
+
+   One confirmed figure enters One-on-One mode. Two through six confirmed
+   figures enter Council mode.
 5. After confirmation, fetch only the confirmed character files, the prompt
    files required for the confirmed mode, current-memory files for shared and
    confirmed figure owners, and relevant accepted decisions. Do not fetch an
