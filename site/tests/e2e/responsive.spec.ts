@@ -154,6 +154,12 @@ test("the Sacred Canon entrance remains separate from Council on desktop and mob
     const council = await page.locator(".council-threshold").boundingBox();
     expect(canon).not.toBeNull();
     expect(council).not.toBeNull();
+    if (viewport.width === reportedDesktopViewport.width) {
+      const councilCenter = council!.x + council!.width / 2;
+      expect(
+        Math.abs(councilCenter - viewport.width / 2),
+      ).toBeLessThanOrEqual(1);
+    }
     expect(canon!.x + canon!.width / 2).toBeLessThan(
       council!.x + council!.width / 2,
     );
