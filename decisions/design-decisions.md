@@ -73,6 +73,11 @@ The Iron Regent 明确具有 strong will，不受人性弱点支配，足够理�
 **Status:** Accepted by Aeris
 **Decision:** GitHub repository 首页 README 只展示链接至 GitHub Pages 的神殿封面与极简入口，不在 README 展示原始目标、角色表、Stage 0 流程或内部文档索引。
 
+## D-013 — Sacred Canon
+
+**Status:** Accepted by Aeris
+**Decision:** `圣典.md` 独立于普通 memory，记录最重要的原则、教训、最核心的价值观与最重要的回忆。候选条目只能在 session 关闭后逐条审查，且只有 Aeris 明确批准后才能写入。普通对话不自动加载圣典；只有 Aeris 明确指出“查考圣典”时，才从 `main` 完整加载该文件。网站仅提供独立入口和只读查看。
+
 ## 尚未决定
 
 - Stage 1 的具体 static-site framework。

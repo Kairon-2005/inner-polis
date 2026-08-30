@@ -51,3 +51,10 @@ The session record must be saved before memory review changes any
 review and acceptance of candidates against the saved record before any
 `memory/*/current.md` change. A candidate is not accepted memory until Aeris
 explicitly accepts it.
+
+## SACRED CANON REVIEW
+
+Sacred Canon review is separate and optional. Use
+[`sacred-canon-review.md`](sacred-canon-review.md) only for explicitly proposed
+Sacred Canon candidates or accepted-entry operations. The closed session is the
+evidence source; ordinary memory acceptance never promotes an entry implicitly.

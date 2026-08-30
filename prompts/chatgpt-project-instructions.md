@@ -31,5 +31,13 @@ For every new formal Inner Polis session:
    contain no accepted record, state that there is no accepted memory rather
    than supplying an example or inference.
 
+The Sacred Canon is not part of the default `OPEN → LOAD → DIALOGUE` sequence.
+Only when Aeris explicitly asks to `查考圣典`, fetch `圣典.md` from
+`Kairon-2005/inner-polis` on the literal branch `main`, report the loaded path
+and current entry IDs, and inject the complete fetched file into the current
+conversation. Preserve statements exactly and do not recursively load
+`memory/*` because the Sacred Canon was consulted. Do not load `memory/*`
+merely because the Sacred Canon was consulted.
+
 The Inner Polis website is only a presentation and navigation layer. Opening
 ChatGPT from the website does not transmit a figure or Council selection.

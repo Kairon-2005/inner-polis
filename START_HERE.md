@@ -39,6 +39,13 @@ become long-term memory. Use
 [`prompts/memory-review.md`](prompts/memory-review.md) for candidate review and
 existing-memory operations.
 
+## 7. Review Sacred Canon candidates only when explicitly requested
+
+The Sacred Canon is separate from ordinary memory. Use
+[`prompts/sacred-canon-review.md`](prompts/sacred-canon-review.md) only when a
+Sacred Canon candidate or accepted entry is explicitly under review. Only Aeris
+may approve inscription.
+
 ## Quick-start prompt
 
 ```text
