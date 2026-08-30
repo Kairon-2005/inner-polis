@@ -1,0 +1,43 @@
+---
+import type { SacredCanonEntry } from "../types/sacred-canon";
+
+interface Props {
+  entries: readonly SacredCanonEntry[];
+}
+
+const { entries } = Astro.props;
+---
+
+<dialog class="figure-dialog sacred-canon-dialog" data-dialog-id="sacred-canon" aria-label="圣典">
+  <div class="figure-dialog__frame sacred-canon-dialog__frame">
+    <button class="figure-dialog__close" type="button" data-dialog-close aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button>
+    <div class="figure-dialog__reading sacred-canon-dialog__reading">
+      <header class="figure-dialog__header">
+        <p>Sacred Canon</p>
+        <h2>圣典</h2>
+      </header>
+      {entries.length === 0 ? (
+        <p class="sacred-canon-dialog__empty">圣典尚无条目</p>
+      ) : (
+        <div class="sacred-canon-dialog__entries">
+          {entries.map((entry) => (
+            <article class="sacred-canon-entry" data-canon-entry-id={entry.entry_id}>
+              <p class="sacred-canon-entry__category">{entry.category}</p>
+              <blockquote>{entry.statement}</blockquote>
+              <dl>
+                <div><dt>Entry ID</dt><dd>{entry.entry_id}</dd></div>
+                <div><dt>Approved</dt><dd>{entry.approved_at}</dd></div>
+                <div>
+                  <dt>Source</dt>
+                  <dd><ul>{entry.source.map((source) => <li>{source}</li>)}</ul></dd>
+                </div>
+              </dl>
+            </article>
+          ))}
+        </div>
+      )}
+    </div>
+  </div>
+</dialog>

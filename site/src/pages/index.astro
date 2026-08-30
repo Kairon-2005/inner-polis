@@ -5,6 +5,7 @@ import { PORTRAITS } from "../data/portrait-imports";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { loadCharacter } from "../lib/character-content";
 import { loadCurrentMemory } from "../lib/memory-content";
+import { loadSacredCanon } from "../lib/sacred-canon-content";
 
 const readingLayers = await Promise.all(
   FIGURES.map(async (figure) => ({
@@ -14,8 +15,9 @@ const readingLayers = await Promise.all(
     portrait: PORTRAITS[figure.slug],
   })),
 );
+const sacredCanon = await loadSacredCanon();
 ---
 
 <BaseLayout>
-  <TempleEntrance readingLayers={readingLayers} />
+  <TempleEntrance readingLayers={readingLayers} sacredCanon={sacredCanon} />
 </BaseLayout>

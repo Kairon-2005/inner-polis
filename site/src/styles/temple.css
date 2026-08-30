@@ -539,12 +539,22 @@
 .temple__floor > span:nth-child(4) { transform: rotate(-42deg); }
 .temple__floor > span:nth-child(5) { transform: rotate(-62deg); }
 
-.temple__threshold {
+.temple__thresholds {
   position: absolute;
   z-index: 9;
   bottom: clamp(18px, 3.2vh, 34px);
   left: 50%;
   transform: translateX(-50%);
+}
+
+.temple__threshold {
+  position: relative;
+}
+
+.sacred-canon-entrance {
+  position: relative;
+  display: block;
+  margin: 0 auto;
 }
 
 .council-threshold {

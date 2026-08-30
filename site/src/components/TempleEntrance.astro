@@ -2,9 +2,12 @@
 import Throne from "./Throne.astro";
 import FigureDialog from "./FigureDialog.astro";
 import CouncilDialog from "./CouncilDialog.astro";
+import SacredCanonDialog from "./SacredCanonDialog.astro";
+import SacredCanonEntrance from "./SacredCanonEntrance.astro";
 import { FIGURES } from "../data/figures";
 import type { ImageMetadata } from "astro";
 import type { AcceptedMemory, CharacterContent, FigureDefinition, FigureSlug } from "../types/content";
+import type { SacredCanonEntry } from "../types/sacred-canon";
 import "../styles/temple.css";
 import "../styles/dialog.css";
 
@@ -17,9 +20,10 @@ interface ReadingLayer {
 
 interface Props {
   readingLayers: readonly ReadingLayer[];
+  sacredCanon: readonly SacredCanonEntry[];
 }
 
-const { readingLayers } = Astro.props;
+const { readingLayers, sacredCanon } = Astro.props;
 
 const THRONE_NAMES: Record<FigureSlug, string> = {
   aeris: "Aeris",
@@ -70,12 +74,15 @@ const THRONE_NAMES: Record<FigureSlug, string> = {
     <span></span><span></span><span></span><span></span><span></span>
   </div>
 
-  <div class="temple__threshold">
-    <button class="council-threshold" type="button" data-dialog-trigger="council">
-      <span class="council-threshold__sigil" aria-hidden="true"></span>
-      <span class="council-threshold__label">Council</span>
-      <span class="council-threshold__caption" aria-hidden="true">Threshold</span>
-    </button>
+  <div class="temple__thresholds">
+    <SacredCanonEntrance />
+    <div class="temple__threshold">
+      <button class="council-threshold" type="button" data-dialog-trigger="council">
+        <span class="council-threshold__sigil" aria-hidden="true"></span>
+        <span class="council-threshold__label">Council</span>
+        <span class="council-threshold__caption" aria-hidden="true">Threshold</span>
+      </button>
+    </div>
   </div>
 </main>
 
@@ -89,6 +96,8 @@ const THRONE_NAMES: Record<FigureSlug, string> = {
 ))}
 
 <CouncilDialog />
+
+<SacredCanonDialog entries={sacredCanon} />
 
 <script>
   import { initDialogController } from "../scripts/dialog-controller";

@@ -11,4 +11,5 @@ test("renders the ceremonial entrance and all canonical thrones", async ({ page 
   await expect(page.getByRole("button", { name: /Socrates/ })).toBeVisible();
   await expect(page.getByRole("button", { name: /The Little Prince/ })).toBeVisible();
   await expect(page.getByRole("button", { name: /Council/ })).toBeVisible();
+  await expect(page.getByRole("button", { name: "圣典", exact: true })).toBeVisible();
 });
