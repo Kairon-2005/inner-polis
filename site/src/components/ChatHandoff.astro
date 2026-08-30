@@ -1,0 +1,20 @@
+---
+interface Props {
+  labelId: string;
+}
+
+const CHATGPT_URL = "https://chatgpt.com/";
+const { labelId } = Astro.props;
+---
+
+<section class="chat-handoff" aria-labelledby={labelId}>
+  <div>
+    <h3 id={labelId}>ChatGPT 对话交接</h3>
+    <p>正式角色选择将在 ChatGPT 中完成。</p>
+    <p>本站不会传送任何角色或 Council 选择；此链接只会打开 ChatGPT。</p>
+  </div>
+  <a href={CHATGPT_URL} target="_blank" rel="noopener noreferrer">
+    进入 ChatGPT
+    <span aria-hidden="true">↗</span>
+  </a>
+</section>

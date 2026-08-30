@@ -1,0 +1,38 @@
+---
+import type { ImageMetadata } from "astro";
+import type { FigureDefinition } from "../types/content";
+
+interface Props {
+  figure: FigureDefinition;
+  name: string;
+  portrait: ImageMetadata;
+  dominant?: boolean;
+}
+
+const { figure, name, portrait, dominant = false } = Astro.props;
+---
+
+<button
+  class:list={["throne", { "throne--dominant": dominant }]}
+  data-figure={figure.slug}
+  data-dialog-trigger={figure.slug}
+  type="button"
+>
+  <span class="throne__body">
+    <span class="throne__aureole" aria-hidden="true"></span>
+    <span class="throne__portrait" aria-hidden="true">
+      <img
+        src={portrait.src}
+        width={portrait.width}
+        height={portrait.height}
+        alt=""
+        loading={dominant ? "eager" : "lazy"}
+        fetchpriority={dominant ? "high" : "auto"}
+        decoding="async"
+        draggable="false"
+      />
+    </span>
+    <span class="throne__seat" aria-hidden="true"></span>
+    <span class="throne__name">{name}</span>
+  </span>
+</button>

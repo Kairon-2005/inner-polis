@@ -1,0 +1,26 @@
+---
+import ChatHandoff from "./ChatHandoff.astro";
+---
+
+<dialog class="figure-dialog council-dialog" data-dialog-id="council" aria-label="Council">
+  <div class="figure-dialog__frame council-dialog__frame">
+    <button class="figure-dialog__close" type="button" data-dialog-close aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button>
+
+    <div class="figure-dialog__reading council-dialog__reading">
+      <header class="figure-dialog__header">
+        <p>Dialogue threshold</p>
+        <h2>Council</h2>
+      </header>
+
+      <div class="council-dialog__explanation">
+        <p>
+          Council 是由两至六位已确认角色参与的对话模式。这里仅说明如何进入，不在本站选择角色，也不模拟讨论。
+        </p>
+      </div>
+
+      <ChatHandoff labelId="council-chat-handoff-title" />
+    </div>
+  </div>
+</dialog>

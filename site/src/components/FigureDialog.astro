@@ -1,0 +1,74 @@
+---
+import type { ImageMetadata } from "astro";
+import type { AcceptedMemory, CharacterContent } from "../types/content";
+import ChatHandoff from "./ChatHandoff.astro";
+
+interface Props {
+  name: string;
+  character: CharacterContent;
+  memories: readonly AcceptedMemory[];
+  portrait: ImageMetadata;
+}
+
+const { name, character, memories, portrait } = Astro.props;
+---
+
+<dialog class="figure-dialog" data-dialog-id={character.slug} aria-label={name}>
+  <div class="figure-dialog__frame">
+    <button class="figure-dialog__close" type="button" data-dialog-close aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button>
+
+    <aside class="figure-dialog__portrait">
+      <img
+        src={portrait.src}
+        width={portrait.width}
+        height={portrait.height}
+        alt={`Portrait of ${character.canonicalName}`}
+        loading="lazy"
+        decoding="async"
+        draggable="false"
+      />
+    </aside>
+
+    <div class="figure-dialog__reading">
+      <header class="figure-dialog__header">
+        <p>Character record</p>
+        <h2>{character.canonicalName}</h2>
+      </header>
+
+      <article class="figure-dialog__character" set:html={character.html} />
+
+      <section class="figure-dialog__memories" aria-labelledby={`${character.slug}-memory-title`}>
+        <h3 id={`${character.slug}-memory-title`}>Accepted memory</h3>
+        {memories.length === 0 ? (
+          <p class="figure-dialog__empty-memory">尚无已接受记忆</p>
+        ) : (
+          <div class="figure-dialog__memory-list">
+            {memories.map((memory) => (
+              <article class="figure-dialog__memory" data-memory-id={memory.memory_id}>
+                <p>{memory.statement}</p>
+                <dl>
+                  <div>
+                    <dt>Type</dt>
+                    <dd>{memory.type}</dd>
+                  </div>
+                  <div>
+                    <dt>Epistemic status</dt>
+                    <dd>{memory.epistemic_status}</dd>
+                  </div>
+                  <div>
+                    <dt>Confidence</dt>
+                    <dd>{memory.confidence}</dd>
+                  </div>
+                </dl>
+              </article>
+            ))}
+          </div>
+        )}
+      </section>
+
+      <ChatHandoff labelId={`${character.slug}-chat-handoff-title`} />
+    </div>
+  </div>
+</dialog>

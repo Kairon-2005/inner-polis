@@ -1,4 +1,9 @@
 .DS_Store
 .worktrees/
 .superpowers/
-
+site/node_modules/
+site/dist/
+site/.astro/
+site/test-results/
+site/playwright-report/
+site/coverage/

@@ -1,0 +1,97 @@
+---
+import Throne from "./Throne.astro";
+import FigureDialog from "./FigureDialog.astro";
+import CouncilDialog from "./CouncilDialog.astro";
+import { FIGURES } from "../data/figures";
+import type { ImageMetadata } from "astro";
+import type { AcceptedMemory, CharacterContent, FigureDefinition, FigureSlug } from "../types/content";
+import "../styles/temple.css";
+import "../styles/dialog.css";
+
+interface ReadingLayer {
+  figure: FigureDefinition;
+  character: CharacterContent;
+  memories: readonly AcceptedMemory[];
+  portrait: ImageMetadata;
+}
+
+interface Props {
+  readingLayers: readonly ReadingLayer[];
+}
+
+const { readingLayers } = Astro.props;
+
+const THRONE_NAMES: Record<FigureSlug, string> = {
+  aeris: "Aeris",
+  "iron-regent": "The Iron Regent",
+  avalokita: "Avalokita",
+  metis: "Metis",
+  socrates: "Socrates",
+  "little-prince": "The Little Prince",
+};
+---
+
+<main class="temple" aria-labelledby="temple-title">
+  <div class="temple__cosmos" aria-hidden="true"></div>
+
+  <div class="temple__architecture" aria-hidden="true">
+    <div class="temple__arch temple__arch--outer"></div>
+    <div class="temple__arch temple__arch--inner"></div>
+    <div class="temple__vault-line temple__vault-line--left"></div>
+    <div class="temple__vault-line temple__vault-line--right"></div>
+    <div class="temple__oculus"></div>
+
+    <div class="temple__columns temple__columns--left">
+      <i></i><i></i><i></i>
+    </div>
+    <div class="temple__columns temple__columns--right">
+      <i></i><i></i><i></i>
+    </div>
+  </div>
+
+  <header class="temple__title">
+    <p>The Temple Within</p>
+    <h1 id="temple-title">Inner Polis</h1>
+    <span aria-hidden="true"></span>
+  </header>
+
+  <section class="temple__court" aria-label="The six thrones">
+    {FIGURES.map((figure) => (
+      <Throne
+        figure={figure}
+        name={THRONE_NAMES[figure.slug]}
+        portrait={readingLayers.find((layer) => layer.figure.slug === figure.slug)!.portrait}
+        dominant={figure.slug === "aeris"}
+      />
+    ))}
+  </section>
+
+  <div class="temple__floor" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <div class="temple__threshold">
+    <button class="council-threshold" type="button" data-dialog-trigger="council">
+      <span class="council-threshold__sigil" aria-hidden="true"></span>
+      <span class="council-threshold__label">Council</span>
+      <span class="council-threshold__caption" aria-hidden="true">Threshold</span>
+    </button>
+  </div>
+</main>
+
+{readingLayers.map(({ figure, character, memories, portrait }) => (
+  <FigureDialog
+    name={THRONE_NAMES[figure.slug]}
+    character={character}
+    memories={memories}
+    portrait={portrait}
+  />
+))}
+
+<CouncilDialog />
+
+<script>
+  import { initDialogController } from "../scripts/dialog-controller";
+
+  initDialogController(document);
+</script>
