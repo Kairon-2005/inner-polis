@@ -56,4 +56,31 @@ To begin an operational session, start with [`START_HERE.md`](START_HERE.md).
 - [Stage 0 implementation plan](docs/superpowers/plans/2026-08-29-stage-0-dialogue-memory.md)
 - [Fictional Stage 0 dry run](examples/stage-0-dry-run.md)
 
-Stage 1 将在这些 Markdown canon 之上建立 GitHub Pages 互动书网站。
+## Stage 1 网站
+
+Stage 1 在这些 Markdown canon 之上提供一个 desktop-primary 的静态 Astro
+入口网站；窄屏设备保留可访问内容与操作，作为 mobile compatibility fallback，
+而不是另一套功能或状态模型。
+
+本地运行和预览：
+
+```bash
+cd site
+npm ci
+npm run assets:build
+npm run dev
+
+# 检查生产构建
+npm run build
+npm run preview
+```
+
+本地开发和生产预览入口都是 `/inner-polis/`。GitHub Pages workflow 从 `main`
+构建 `site/`，目标发布地址是
+<https://kairon-2005.github.io/inner-polis/>。首次发布前，repository
+**Settings → Pages → Source** 必须设为 **GitHub Actions**。
+
+网站只负责展示和引导。正式 session 在 Inner Polis ChatGPT Project 内进行；
+Project 通过已连接的 GitHub 读取 `main` 上的实时 `START_HERE.md` 和相关
+instructions，再在 ChatGPT 内确认角色与模式。网站没有 backend 或 LLM/API，
+不会把网页选择、状态或 memory 自动转移到 ChatGPT，也不会写入 repository。
