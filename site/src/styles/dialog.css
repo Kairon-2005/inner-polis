@@ -278,6 +278,61 @@ body.dialog-open {
   margin: 0;
 }
 
+.sacred-canon-dialog {
+  width: min(54rem, calc(100vw - 2rem));
+}
+
+.sacred-canon-dialog__frame {
+  display: block;
+  height: auto;
+}
+
+.sacred-canon-dialog__reading {
+  max-height: calc(100dvh - 2rem);
+  overflow-y: auto;
+}
+
+.sacred-canon-dialog__empty {
+  color: var(--ivory-muted);
+  font-style: italic;
+}
+
+.sacred-canon-dialog__entries {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.sacred-canon-entry {
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid color-mix(in srgb, var(--gold) 30%, transparent);
+  background: rgb(255 255 255 / 0.018);
+}
+
+.sacred-canon-entry__category {
+  color: var(--gold-bright);
+  text-transform: uppercase;
+}
+
+.sacred-canon-entry blockquote {
+  margin: 1rem 0 1.5rem;
+  color: var(--ivory);
+}
+
+.sacred-canon-entry dl {
+  margin: 0;
+  color: var(--ivory-muted);
+}
+
+.sacred-canon-entry dd {
+  margin: 0.25rem 0 0;
+  overflow-wrap: anywhere;
+}
+
+.sacred-canon-entry ul {
+  margin: 0;
+  padding-left: 1.15rem;
+}
+
 @media (max-width: 700px) {
   .figure-dialog {
     width: 100vw;
@@ -339,6 +394,16 @@ body.dialog-open {
   }
 
   .council-dialog__reading {
+    height: 100%;
+    max-height: none;
+    padding-top: calc(2rem + env(safe-area-inset-top));
+  }
+
+  .sacred-canon-dialog__frame {
+    height: 100%;
+  }
+
+  .sacred-canon-dialog__reading {
     height: 100%;
     max-height: none;
     padding-top: calc(2rem + env(safe-area-inset-top));

@@ -542,19 +542,83 @@
 .temple__thresholds {
   position: absolute;
   z-index: 9;
+  right: clamp(18px, 4vw, 72px);
   bottom: clamp(18px, 3.2vh, 34px);
-  left: 50%;
-  transform: translateX(-50%);
+  left: clamp(18px, 4vw, 72px);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: end;
+  gap: clamp(18px, 3vw, 48px);
 }
 
 .temple__threshold {
-  position: relative;
+  position: static;
+  grid-column: 2;
+  transform: none;
 }
 
 .sacred-canon-entrance {
   position: relative;
+  display: grid;
+  grid-column: 1;
+  min-width: 92px;
+  min-height: 72px;
+  padding: 10px 14px 8px;
+  place-items: center;
+  justify-self: end;
+  color: var(--ivory);
+  cursor: pointer;
+  border: 1px solid color-mix(in srgb, var(--gold) 44%, transparent);
+  background: rgb(3 3 4 / 0.9);
+  transition:
+    transform 300ms var(--ease-ceremonial),
+    border-color 300ms var(--ease-ceremonial);
+}
+
+.sacred-canon-entrance__book {
+  position: relative;
   display: block;
-  margin: 0 auto;
+  width: 50px;
+  height: 30px;
+  border-bottom: 2px solid var(--gold);
+  perspective: 80px;
+}
+
+.sacred-canon-entrance__book i {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 25px;
+  border: 1px solid color-mix(in srgb, var(--gold-bright) 62%, transparent);
+  background: linear-gradient(180deg, rgb(243 240 232 / 0.12), transparent);
+}
+
+.sacred-canon-entrance__book i:first-child {
+  left: 0;
+  transform: rotateY(20deg);
+}
+
+.sacred-canon-entrance__book i:last-child {
+  right: 0;
+  transform: rotateY(-20deg);
+}
+
+.sacred-canon-entrance__label {
+  font: 500 0.7rem/1 var(--font-inscription);
+  letter-spacing: 0.28em;
+}
+
+.sacred-canon-entrance:hover {
+  border-color: var(--gold-bright);
+  transform: translateY(-3px);
+}
+
+.sacred-canon-entrance:focus-visible {
+  outline: 2px solid var(--ivory);
+  outline-offset: 6px;
+  box-shadow:
+    0 0 0 2px var(--void),
+    0 0 0 4px var(--gold-bright);
 }
 
 .council-threshold {
@@ -627,8 +691,23 @@
 
 @media (max-width: 820px) {
   .temple {
-    min-height: 2050px;
+    min-height: 2180px;
     overflow-y: auto;
+  }
+
+  .temple__thresholds {
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+  }
+
+  .sacred-canon-entrance {
+    grid-column: 1;
+    justify-self: end;
+  }
+
+  .temple__threshold {
+    grid-column: 2;
+    justify-self: start;
   }
 
   .temple__architecture {
@@ -717,6 +796,7 @@
 @media (prefers-reduced-motion: reduce) {
   .throne__body,
   .throne__aureole,
+  .sacred-canon-entrance,
   .council-threshold {
     transition: none;
   }

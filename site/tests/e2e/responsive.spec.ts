@@ -146,6 +146,25 @@ test("an open mobile figure dialog fits the viewport and remains scrollable", as
   );
 });
 
+test("the Sacred Canon entrance remains separate from Council on desktop and mobile", async ({ page }) => {
+  for (const viewport of [{ width: 1470, height: 956 }, { width: 390, height: 844 }]) {
+    await page.setViewportSize(viewport);
+    await page.goto("/inner-polis/");
+    const canon = await page.locator(".sacred-canon-entrance").boundingBox();
+    const council = await page.locator(".council-threshold").boundingBox();
+    expect(canon).not.toBeNull();
+    expect(council).not.toBeNull();
+    expect(canon!.x + canon!.width / 2).toBeLessThan(
+      council!.x + council!.width / 2,
+    );
+    const overlapWidth = Math.min(canon!.x + canon!.width, council!.x + council!.width)
+      - Math.max(canon!.x, council!.x);
+    const overlapHeight = Math.min(canon!.y + canon!.height, council!.y + council!.height)
+      - Math.max(canon!.y, council!.y);
+    expect(overlapWidth > 0 && overlapHeight > 0).toBe(false);
+  }
+});
+
 test("reduced motion removes decorative motion and interaction transitions", async ({
   page,
 }) => {
@@ -157,6 +176,7 @@ test("reduced motion removes decorative motion and interaction transitions", asy
     ".temple__architecture",
     ".throne__body",
     ".throne__aureole",
+    ".sacred-canon-entrance",
     ".council-threshold",
   ]) {
     const motion = await page

@@ -30,6 +30,13 @@ test("an open figure dialog has no serious or critical accessibility violations"
   expect(await seriousOrCriticalViolations(page)).toEqual([]);
 });
 
+test("an open Sacred Canon dialog has no serious or critical accessibility violations", async ({ page }) => {
+  await page.goto("/inner-polis/");
+  await page.getByRole("button", { name: "圣典", exact: true }).click();
+  await expect(page.getByRole("dialog", { name: "圣典", exact: true })).toBeVisible();
+  expect(await seriousOrCriticalViolations(page)).toEqual([]);
+});
+
 test("every visible temple action provides a 44 pixel touch target", async ({
   page,
 }) => {
