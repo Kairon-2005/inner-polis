@@ -24,6 +24,39 @@ test("opens Aeris, shows canonical text and the empty-memory state", async ({ pa
   await expect(page.locator("body")).not.toHaveCSS("overflow", "hidden");
 });
 
+test("keeps long canonical content scrollable inside the desktop dialog", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 720 });
+  await page.goto("/inner-polis/");
+  await page.getByRole("button", { name: "Aeris", exact: true }).click();
+
+  const dialog = page.getByRole("dialog", { name: "Aeris", exact: true });
+  const reading = dialog.locator(".figure-dialog__reading");
+  await expect(dialog).toBeVisible();
+
+  const dimensions = await reading.evaluate((element) => ({
+    clientHeight: element.clientHeight,
+    scrollHeight: element.scrollHeight,
+    overflowY: getComputedStyle(element).overflowY,
+  }));
+
+  expect(dimensions.overflowY).toBe("auto");
+  expect(dimensions.scrollHeight).toBeGreaterThan(dimensions.clientHeight);
+
+  await reading.evaluate((element) => {
+    element.scrollTop = element.scrollHeight;
+  });
+  await expect(reading).toContainText("尚无已接受记忆");
+  expect(await reading.evaluate((element) => element.scrollTop)).toBeGreaterThan(0);
+});
+
+test("identifies the canonical figure portrait to assistive technology", async ({ page }) => {
+  await page.goto("/inner-polis/");
+  await page.getByRole("button", { name: "Aeris", exact: true }).click();
+
+  const dialog = page.getByRole("dialog", { name: "Aeris", exact: true });
+  await expect(dialog.getByRole("img", { name: "Portrait of Aeris" })).toBeVisible();
+});
+
 for (const figure of figures) {
   test(`maps the ${figure.throneName} throne to its reading layer`, async ({ page }) => {
     await page.goto("/inner-polis/");

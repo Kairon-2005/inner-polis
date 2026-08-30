@@ -18,12 +18,12 @@ const { name, character, memories, portrait } = Astro.props;
       <span aria-hidden="true">×</span>
     </button>
 
-    <aside class="figure-dialog__portrait" aria-hidden="true">
+    <aside class="figure-dialog__portrait">
       <img
         src={portrait.src}
         width={portrait.width}
         height={portrait.height}
-        alt=""
+        alt={`Portrait of ${character.canonicalName}`}
         loading="lazy"
         decoding="async"
         draggable="false"

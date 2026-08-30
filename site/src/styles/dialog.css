@@ -27,7 +27,8 @@ body.dialog-open {
   position: relative;
   display: grid;
   grid-template-columns: minmax(12rem, 30%) minmax(0, 1fr);
-  min-height: min(44rem, calc(100dvh - 2rem));
+  height: min(44rem, calc(100dvh - 2rem));
+  min-height: 0;
 }
 
 .figure-dialog__close {
@@ -88,6 +89,7 @@ body.dialog-open {
 }
 
 .figure-dialog__reading {
+  min-height: 0;
   padding: clamp(2.5rem, 5vw, 4.5rem);
   padding-right: clamp(3.75rem, 7vw, 5.5rem);
   overflow-y: auto;
@@ -195,6 +197,7 @@ body.dialog-open {
 @media (max-width: 700px) {
   .figure-dialog__frame {
     display: block;
+    height: calc(100dvh - 2rem);
   }
 
   .figure-dialog__portrait {

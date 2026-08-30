@@ -33,6 +33,11 @@ supersedes: null
 state: current
 \`\`\``;
 
+const currentApprovedSharedYaml = currentApprovedYaml.replace(
+  "owner: aeris",
+  "owner: shared",
+);
+
 const malformedAcceptedYaml = `\`\`\`yaml
 memory_id: memory-2026-08-30-001
 approved_by_aeris: true
@@ -66,6 +71,16 @@ describe("accepted memory", () => {
     expect(() => loadAcceptedBlocks(malformedAcceptedYaml, "memory/aeris/current.md")).toThrow(
       "memory/aeris/current.md",
     );
+  });
+
+  it("rejects accepted records whose owner does not match their current-memory store", () => {
+    expect(() =>
+      loadAcceptedBlocks(currentApprovedSharedYaml, "memory/aeris/current.md", "aeris"),
+    ).toThrow("memory/aeris/current.md: owner shared does not match store owner aeris");
+
+    expect(() =>
+      loadAcceptedBlocks(currentApprovedYaml, "memory/shared/current.md", "shared"),
+    ).toThrow("memory/shared/current.md: owner aeris does not match store owner shared");
   });
 
   it("finds no accepted records in the seven real current-memory stores", async () => {

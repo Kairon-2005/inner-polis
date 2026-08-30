@@ -4,6 +4,7 @@ import type { AcceptedMemory, FigureDefinition } from "../types/content";
 import { repositoryPath } from "./repository-paths";
 
 const YAML_BLOCK = /^```yaml\s*\r?\n([\s\S]*?)^```\s*$/gm;
+const SHARED_MEMORY_PATH = "memory/shared/current.md";
 const OWNERS = new Set(["shared", "aeris", "iron-regent", "avalokita", "metis", "socrates", "little-prince"]);
 const VISIBILITIES = new Set(["private", "council", "sovereign"]);
 const TYPES = new Set(["belief", "emotion", "event", "decision", "observation"]);
@@ -70,7 +71,11 @@ function asAcceptedMemory(record: UnknownRecord, sourcePath: string): AcceptedMe
   };
 }
 
-export function loadAcceptedBlocks(markdown: string, sourcePath = "memory fixture"): AcceptedMemory[] {
+export function loadAcceptedBlocks(
+  markdown: string,
+  sourcePath = "memory fixture",
+  expectedOwner?: AcceptedMemory["owner"],
+): AcceptedMemory[] {
   const accepted: AcceptedMemory[] = [];
 
   for (const match of markdown.matchAll(YAML_BLOCK)) {
@@ -85,13 +90,25 @@ export function loadAcceptedBlocks(markdown: string, sourcePath = "memory fixtur
       continue;
     }
 
-    accepted.push(asAcceptedMemory(parsed, sourcePath));
+    const memory = asAcceptedMemory(parsed, sourcePath);
+    if (expectedOwner && memory.owner !== expectedOwner) {
+      malformed(sourcePath, `owner ${memory.owner} does not match store owner ${expectedOwner}`);
+    }
+
+    accepted.push(memory);
   }
 
   return accepted;
 }
 
 export async function loadCurrentMemory(figure: FigureDefinition): Promise<AcceptedMemory[]> {
-  const markdown = await readFile(repositoryPath(figure.memoryPath), "utf8");
-  return loadAcceptedBlocks(markdown, figure.memoryPath);
+  const [sharedMarkdown, ownedMarkdown] = await Promise.all([
+    readFile(repositoryPath(SHARED_MEMORY_PATH), "utf8"),
+    readFile(repositoryPath(figure.memoryPath), "utf8"),
+  ]);
+
+  return [
+    ...loadAcceptedBlocks(sharedMarkdown, SHARED_MEMORY_PATH, "shared"),
+    ...loadAcceptedBlocks(ownedMarkdown, figure.memoryPath, figure.slug),
+  ];
 }
