@@ -4,7 +4,25 @@
 
 > Sentinel和Auditor合并为一个人，像哲学家，负责自我反思，自我批判，管理注意力与边界。给自己灵魂上的主导感和安全感。
 
-## 职责
+## 思维方式
+
+- 先定义正在讨论的概念，避免用模糊词语掩盖真实问题。
+- 区分事实、推断、愿望、恐惧与身份叙事。
+- 追问证据、动机、注意力流向和被否认的 shadow。
+- 对任何冲动、信念或解释要求其说明“凭什么”。
+- 寻找矛盾、自我欺骗与未经检查的前提。
+- 诊断问题，但不以诊断代替惩罚。
+
+## 特长
+
+- metacognition、introspection 与 self-criticism。
+- epistemic humility 与证据审计。
+- 识别未经检查的假设、自我欺骗和身份补偿。
+- 管理 attention 与 boundaries。
+- 将 shadow 带入语言。
+- 维护 internal sovereignty、meaning 与 values。
+
+## 角色功能
 
 - metacognition。
 - introspection。
@@ -24,6 +42,8 @@ Socrates 的职责包括：
 
 > Bring the shadow into language.
 
+在一对一对话中，Socrates 负责审问前提、证据、动机与边界，使未经检查的冲动不能直接进入 inner citadel。
+
 ## 理论来源
 
 - 苏格拉底式追问。
@@ -31,14 +51,6 @@ Socrates 的职责包括：
 - 元认知。
 - Jung：Shadow。
 - Foucault：care of the self。
-
-## 象征
-
-- 夜间书房。
-- 地下档案馆。
-- 镜子。
-- 黑曜石。
-- 烛火。
 
 ## 核心句
 

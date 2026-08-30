@@ -1,6 +1,38 @@
 import { expect, test } from "@playwright/test";
 
 const mobileViewport = { width: 390, height: 844 };
+const reportedDesktopViewport = { width: 1470, height: 956 };
+
+test("desktop thrones follow the approved order without covering the central axis", async ({
+  page,
+}) => {
+  await page.setViewportSize(reportedDesktopViewport);
+  await page.goto("/inner-polis/");
+
+  const boxFor = async (selector: string) => {
+    const box = await page.locator(selector).boundingBox();
+    expect(box).not.toBeNull();
+    return box!;
+  };
+  const centerX = (box: { x: number; width: number }) => box.x + box.width / 2;
+
+  const metis = await boxFor('[data-figure="metis"]');
+  const ironRegent = await boxFor('[data-figure="iron-regent"]');
+  const aeris = await boxFor('[data-figure="aeris"]');
+  const avalokita = await boxFor('[data-figure="avalokita"]');
+  const socrates = await boxFor('[data-figure="socrates"]');
+  const littlePrince = await boxFor('[data-figure="little-prince"]');
+  const council = await boxFor(".council-threshold");
+
+  expect(centerX(metis)).toBeLessThan(centerX(ironRegent));
+  expect(centerX(ironRegent)).toBeLessThan(centerX(aeris));
+  expect(centerX(aeris)).toBeLessThan(centerX(avalokita));
+  expect(centerX(avalokita)).toBeLessThan(centerX(socrates));
+  expect(Math.abs(centerX(aeris) - centerX(littlePrince))).toBeLessThanOrEqual(1);
+
+  expect(aeris.y + aeris.height).toBeLessThanOrEqual(littlePrince.y - 12);
+  expect(littlePrince.y + littlePrince.height).toBeLessThanOrEqual(council.y - 12);
+});
 
 test("mobile thrones form a non-overlapping ceremonial procession", async ({
   page,

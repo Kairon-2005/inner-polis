@@ -288,6 +288,10 @@
 }
 
 .temple__court {
+  --aeris-top: -3%;
+  --aeris-height: clamp(268px, 42vh, 400px);
+  --central-gap: clamp(12px, 1.8vh, 20px);
+  --little-prince-height: clamp(150px, 20vh, 190px);
   position: absolute;
   z-index: 5;
   inset: clamp(132px, 18vh, 180px) clamp(82px, 9vw, 150px) clamp(150px, 18vh, 185px);
@@ -310,30 +314,30 @@
 
 .throne[data-figure="aeris"] {
   --throne-accent: var(--figure-aeris);
-  top: -3%;
+  top: var(--aeris-top);
   left: 50%;
   z-index: 6;
   width: clamp(132px, 14vw, 196px);
-  height: clamp(268px, 50vh, 460px);
+  height: var(--aeris-height);
   transform: translateX(-50%);
 }
 
 .throne[data-figure="iron-regent"] {
   --throne-accent: var(--figure-iron-regent);
-  top: 29%;
-  left: 1%;
+  top: 12%;
+  left: 22%;
 }
 
 .throne[data-figure="avalokita"] {
   --throne-accent: var(--figure-avalokita);
   top: 12%;
-  left: 22%;
+  right: 22%;
 }
 
 .throne[data-figure="metis"] {
   --throne-accent: var(--figure-metis);
-  top: 12%;
-  right: 22%;
+  top: 29%;
+  left: 1%;
 }
 
 .throne[data-figure="socrates"] {
@@ -344,11 +348,11 @@
 
 .throne[data-figure="little-prince"] {
   --throne-accent: var(--figure-little-prince);
-  top: 43%;
+  top: calc(var(--aeris-top) + var(--aeris-height) + var(--central-gap));
   left: 50%;
   z-index: 7;
   width: clamp(90px, 8.4vw, 126px);
-  height: clamp(178px, 30vh, 278px);
+  height: var(--little-prince-height);
   transform: translateX(-50%);
 }
 
