@@ -9,6 +9,7 @@ import { repositoryPath } from "./repository-paths";
 
 const SACRED_CANON_PATH = "圣典.md";
 const YAML_BLOCK = /^```yaml\s*\r?\n([\s\S]*?)^```\s*$/gm;
+const YAML_OPENING_FENCE = /^```yaml\s*$/gm;
 const CATEGORIES = new Set(["principle", "lesson", "core-value", "essential-memory"]);
 const STATES = new Set(["current", "superseded", "archived"]);
 
@@ -81,8 +82,13 @@ export function parseSacredCanon(
   const allEntries: SacredCanonEntry[] = [];
   const entryIds = new Set<string>();
   const candidateIds = new Set<string>();
+  const yamlBlocks = [...markdown.matchAll(YAML_BLOCK)];
 
-  for (const match of markdown.matchAll(YAML_BLOCK)) {
+  if (yamlBlocks.length !== [...markdown.matchAll(YAML_OPENING_FENCE)].length) {
+    return malformed(sourcePath, "YAML fence must be terminated");
+  }
+
+  for (const match of yamlBlocks) {
     let parsed: unknown;
     try {
       parsed = parse(match[1]);

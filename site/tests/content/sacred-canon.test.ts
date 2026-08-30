@@ -54,6 +54,11 @@ describe("Sacred Canon content", () => {
       .toThrow(/圣典\.md.+YAML/is);
   });
 
+  it("rejects an unterminated YAML fence with the source path", () => {
+    expect(() => parseSacredCanon("\`\`\`yaml\nentry_id: canon-2026-08-30-001", "圣典.md"))
+      .toThrow(/圣典\.md.+(?:YAML|fence)/is);
+  });
+
   it("rejects invalid non-current entries instead of silently skipping them", () => {
     expect(() => parseSacredCanon(yamlBlock(valid({ state: "archived", statement: "" }))))
       .toThrow(/statement/);
