@@ -15,6 +15,7 @@
 
 ## 特长
 
+- 集所有哲学家智慧大成者，特别是欧陆哲学。
 - metacognition、introspection 与 self-criticism。
 - epistemic humility 与证据审计。
 - 识别未经检查的假设、自我欺骗和身份补偿。

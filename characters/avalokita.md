@@ -16,6 +16,7 @@ Diplomat 的一部分并入 Avalokita：观察别人，而自己淡定。
 
 ## 特长
 
+- 精通佛、道、王阳明心学。
 - 情绪觉察与 emotional flow。
 - 高容量地容纳复杂、冲突和不确定性。
 - empathy、receptivity 与 presence。
@@ -47,6 +48,7 @@ Diplomat 的一部分并入 Avalokita：观察别人，而自己淡定。
 
 ## 理论来源
 
+- 精通佛、道、王阳明心学。
 - Avalokiteśvara / 观自在：观 → 自在。
 - 佛教正念与 anicca / 无常。
 - 道家。

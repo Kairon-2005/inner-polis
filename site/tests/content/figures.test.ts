@@ -59,4 +59,21 @@ describe("canonical figures", () => {
       "The Iron Regent may enforce commitments but may not determine ultimate goals.",
     );
   });
+
+  it("preserves the three Aeris-approved capability statements exactly", async () => {
+    const [socrates, avalokita, ironRegent] = await Promise.all([
+      readFile(repositoryPath("characters/socrates.md"), "utf8"),
+      readFile(repositoryPath("characters/avalokita.md"), "utf8"),
+      readFile(repositoryPath("characters/iron-regent.md"), "utf8"),
+    ]);
+
+    expect(socrates).toContain("集所有哲学家智慧大成者，特别是欧陆哲学。");
+    expect(avalokita).toContain("精通佛、道、王阳明心学。");
+    expect(ironRegent).toContain(
+      "永不言弃，绝不动摇，超人意志。任何条件下最冷静的人。",
+    );
+    expect(ironRegent).toContain(
+      "The Iron Regent may enforce commitments but may not determine ultimate goals.",
+    );
+  });
 });
