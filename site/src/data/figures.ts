@@ -40,7 +40,7 @@ export const FIGURES: readonly FigureDefinition[] = [
     slug: "little-prince",
     characterPath: "characters/little-prince.md",
     memoryPath: "memory/little-prince/current.md",
-    portraitPath: "assets/characters/little-prince/fullbody-v1.png",
+    portraitPath: "assets/characters/little-prince/fullbody-v1.jpeg",
     webPortraitPath: "src/assets/portraits/little-prince.webp",
   },
 ];
